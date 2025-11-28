@@ -1,0 +1,4 @@
+{
+    "model": "Classic_ResNet18",
+    "epochs": 5
+}

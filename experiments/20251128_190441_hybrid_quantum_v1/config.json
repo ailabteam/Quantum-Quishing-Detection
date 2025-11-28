@@ -1,0 +1,10 @@
+{
+    "exp_name": "hybrid_quantum_v1",
+    "data_path": "data/raw/qr_codes_29.pickle",
+    "labels_path": "data/raw/qr_codes_29_labels.pickle",
+    "batch_size": 32,
+    "lr": 0.001,
+    "epochs": 20,
+    "n_qubits": 4,
+    "n_layers": 3
+}

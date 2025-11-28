@@ -1,0 +1,8 @@
+{
+    "exp_name": "dual_branch_CLASSICAL_baseline",
+    "data_path": "data/raw/qr_codes_29.pickle",
+    "labels_path": "data/raw/qr_codes_29_labels.pickle",
+    "batch_size": 32,
+    "lr": 0.0005,
+    "epochs": 20
+}
