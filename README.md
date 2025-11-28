@@ -30,13 +30,9 @@ The Q-ResNet maintains high dependability (above 90% Acc) where the classical sy
 
 **Figure 1: Robustness Against Gaussian Noise**
 
-*(Bạn nên upload Figure_2_Noise_Robustness.pdf lên GitHub và hiển thị nó ở đây. Ví dụ:)*
-
 ![Gaussian Noise Robustness Comparison Chart](figures_for_paper/Figure_2_Noise_Robustness.png)
 
 **Figure 2: Feature Space Delineation (t-SNE)**
-
-*(Minh họa t-SNE 4D Quantum features tách lớp rõ ràng hơn 512D Classic features.)*
 
 ![Feature Space Visualization using t-SNE](figures_for_paper/Figure_5_Feature_Space_TSNE.png)
 
