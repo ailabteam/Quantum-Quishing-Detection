@@ -1,0 +1,35 @@
+name: quantum_quish
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - numpy>=1.24
+  - pandas
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - tqdm
+  - pyyaml
+  - opencv
+  # Pytorch ecosystem (CUDA 12.1 compatible with Driver 12.5)
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1
+  # Baselines
+  - xgboost
+  - lightgbm
+  
+  - pip:
+    # PennyLane & GPU support (Quan trọng cho RTX 4090)
+    - pennylane>=0.36
+    - pennylane-lightning[gpu] 
+    - cuquantum-python-cu12 # Thư viện tăng tốc lượng tử của NVIDIA
+    
+    # Utilities
+    - torchsummary
+    - pillow
