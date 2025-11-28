@@ -1,0 +1,7 @@
+Attack Type,Severity Level,Classic Acc (\%),Quantum Acc (\%),Gap (Q - C)
+Gaussian Noise,Sigma = 0.0,100.00,100.00,+0.00
+Gaussian Noise,Sigma = 0.4,61.06,90.45,+29.39
+Gaussian Noise,Sigma = 0.6,49.73,52.32,+2.60
+Occlusion,Block = 0x0,100.00,100.00,+0.00
+Occlusion,Block = 80x80,97.42,96.59,-0.82
+Occlusion,Block = 100x100,94.24,95.25,+1.02
