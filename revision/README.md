@@ -37,13 +37,19 @@ modify the original `src/` pipeline; it adds a corrected, reproducible harness.
 params, so a robustness gap between them isolates the VQC's contribution.
 
 ## Environment (conda-only server, no sudo)
+Recommended (robust): minimal conda env + pip wheels, which avoids the libmamba
+`pytorch-cuda` solver stall and needs no system CUDA:
 ```bash
-conda env create -f revision/environment-revision.yml
+bash revision/setup_env.sh
 conda activate quishing-rev
+```
+Fallback (conda-native, may stall on some solvers):
+```bash
+conda env create -f revision/environment-revision.yml && conda activate quishing-rev
 ```
 No system libraries are needed: the VQC runs on PennyLane's `default.qubit`
 simulator (no lightning.gpu / cuQuantum / CUDA toolkit), and the bias audit
-decodes QR codes with conda-forge OpenCV (no system `zbar`, so no `pyzbar`).
+decodes QR codes with OpenCV (headless wheel, so no system `libGL` or `zbar`).
 
 ## Quick start (server, RTX 4090)
 ```bash
