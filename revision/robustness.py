@@ -146,12 +146,15 @@ def _cli():
     ap.add_argument("--num-workers", type=int, default=8)
     ap.add_argument("--crit-threshold", type=float, default=70.0)
     a = ap.parse_args()
+    from .runlog import start_logging, write_report
+    start_logging(a.exp_dir, "robustness")
     run(a.exp_dir, a.data, a.out,
         threats=set(a.threats.split(",")),
         noise_levels=DEFAULT_NOISE, occ_levels=DEFAULT_OCCLUSION,
         pert_seeds=[int(s) for s in a.pert_seeds.split(",")],
         max_per_class=a.max_per_class, num_workers=a.num_workers,
         crit_threshold=a.crit_threshold)
+    write_report(a.exp_dir)
 
 
 if __name__ == "__main__":

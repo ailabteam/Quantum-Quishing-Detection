@@ -65,11 +65,18 @@ def main():
                        pert_seeds=[0, 1], device="cpu",
                        max_per_class=24, num_workers=0, crit_threshold=70.0)
 
-        for f in ["robustness_raw.csv", "robustness_raw_summary.csv", "robustness_raw_metrics.csv"]:
+        from .runlog import write_report
+        write_report(exp_dir)
+
+        for f in ["robustness_raw.csv", "robustness_raw_summary.csv",
+                  "robustness_raw_metrics.csv", "REPORT.md"]:
             p = os.path.join(exp_dir, f)
             assert os.path.exists(p), f"missing output {p}"
             print(f"[smoke] OK -> {f}")
-        print("\n[smoke] PASSED: full pipeline executed end to end.")
+        print("\n----- REPORT.md preview -----")
+        with open(os.path.join(exp_dir, "REPORT.md"), encoding="utf-8") as fh:
+            print(fh.read())
+        print("[smoke] PASSED: full pipeline executed end to end.")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

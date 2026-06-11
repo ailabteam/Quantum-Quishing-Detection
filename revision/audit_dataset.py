@@ -174,6 +174,8 @@ def _cli():
     ap.add_argument("--out", default="experiments_revision/audit")
     ap.add_argument("--limit-per-class", type=int, default=None)
     a = ap.parse_args()
+    from .runlog import start_logging
+    start_logging(a.out, "audit")
     audit(a.data, a.out, a.limit_per_class)
 
 

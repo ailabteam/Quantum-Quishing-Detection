@@ -70,11 +70,25 @@ python -m revision.robustness --exp-dir experiments_vqc_sens --data data/raw/kag
 python -m revision.audit_dataset --data data/raw/kaggle_qr
 ```
 
+## Reporting workflow (no log pasting)
+Every CLI tees its console to `experiments_revision/logs/<name>_<ts>.log` and the
+ablation / robustness runs regenerate a single consolidated `REPORT.md` with the
+clean-performance table, the AURC/sigma* summary, an automatic ablation verdict,
+and the accuracy-vs-severity curves. Regenerate it anytime:
+```bash
+python -m revision.report --exp-dir experiments_revision
+```
+Then just push the lightweight artifacts (the `.gitignore` in `experiments_revision/`
+excludes the large `.pth` checkpoints automatically):
+```bash
+git add experiments_revision && git commit -m "round-1 results" && git push
+```
+
 ## Outputs to push back for analysis
+- `experiments_revision/REPORT.md` (read this first: everything consolidated)
 - `experiments_revision/meta_*.json` (clean test acc/auc/f1 + param counts per run)
-- `experiments_revision/robustness_raw.csv` (per-seed accuracies)
-- `experiments_revision/robustness_raw_summary.csv` (mean/std per level)
-- `experiments_revision/robustness_raw_metrics.csv` (AURC, sigma*)
+- `experiments_revision/robustness_raw*.csv` (per-seed, summary mean/std, metrics AURC/sigma*)
+- `experiments_revision/logs/*.log` (full console trace incl. timings)
 - `experiments_revision/audit/audit_summary.csv` + `length_matched_subset.csv`
 
 ## Reading the result

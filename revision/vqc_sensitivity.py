@@ -26,6 +26,8 @@ def main():
     ap.add_argument("--batch-size", type=int, default=128)
     ap.add_argument("--num-workers", type=int, default=8)
     a = ap.parse_args()
+    from .runlog import start_logging
+    start_logging(a.out, "vqc_sensitivity")
 
     qubits = [int(x) for x in a.qubits.split(",")]
     layers = [int(x) for x in a.layers.split(",")]

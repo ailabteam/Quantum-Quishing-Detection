@@ -142,6 +142,8 @@ def _cli():
     ap.add_argument("--max-per-class", type=int, default=None)
     ap.add_argument("--num-workers", type=int, default=8)
     a = ap.parse_args()
+    from .runlog import start_logging
+    start_logging(a.out, f"train_{a.model}")
     train_model(a.model, a.data, a.out, seed=a.seed, epochs=a.epochs, lr=a.lr,
                 batch_size=a.batch_size, freeze_backbone=a.freeze_backbone,
                 noise_aware=a.noise_aware, noise_sigma_max=a.noise_sigma_max,

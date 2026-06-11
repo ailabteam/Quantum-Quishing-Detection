@@ -1,0 +1,3 @@
+# Track lightweight artifacts (meta_*.json, *.csv, logs/*.log, REPORT.md) so they
+# can be pushed for review, but never commit the large model checkpoints.
+*.pth

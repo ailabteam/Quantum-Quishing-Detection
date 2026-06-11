@@ -16,6 +16,7 @@ import argparse
 
 from .train import train_model
 from . import robustness
+from .runlog import start_logging, write_report
 
 ABLATION_MODELS = ["classic_fc", "bottleneck_fc", "mlp_head", "qresnet"]
 
@@ -32,6 +33,7 @@ def main():
                     help="also train a noise-aware Q-ResNet and ResNet (R2-2)")
     ap.add_argument("--pert-seeds", default="0,1,2")
     a = ap.parse_args()
+    start_logging(a.out, "run_ablation")
     seeds = [int(s) for s in a.seeds.split(",")]
 
     for seed in seeds:
@@ -50,6 +52,7 @@ def main():
                    occ_levels=robustness.DEFAULT_OCCLUSION,
                    pert_seeds=[int(s) for s in a.pert_seeds.split(",")],
                    num_workers=a.num_workers)
+    write_report(a.out)
 
 
 if __name__ == "__main__":
