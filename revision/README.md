@@ -36,6 +36,15 @@ modify the original `src/` pipeline; it adds a corrected, reproducible harness.
 `bottleneck_fc` / `mlp_head` / `qresnet` are parameter-matched to within ~24
 params, so a robustness gap between them isolates the VQC's contribution.
 
+## Environment (conda-only server, no sudo)
+```bash
+conda env create -f revision/environment-revision.yml
+conda activate quishing-rev
+```
+No system libraries are needed: the VQC runs on PennyLane's `default.qubit`
+simulator (no lightning.gpu / cuQuantum / CUDA toolkit), and the bias audit
+decodes QR codes with conda-forge OpenCV (no system `zbar`, so no `pyzbar`).
+
 ## Quick start (server, RTX 4090)
 ```bash
 # 0) sanity: pipeline runs end-to-end on synthetic data (CPU, ~1 min)
@@ -51,7 +60,7 @@ python -m revision.vqc_sensitivity --data data/raw/kaggle_qr --out experiments_v
 python -m revision.robustness --exp-dir experiments_vqc_sens --data data/raw/kaggle_qr \
     --out experiments_vqc_sens/robustness_raw.csv
 
-# 3) dataset bias audit (R1-1) -- needs: pip install pyzbar opencv-python
+# 3) dataset bias audit (R1-1) -- uses conda-forge opencv (already in the env)
 python -m revision.audit_dataset --data data/raw/kaggle_qr
 ```
 
