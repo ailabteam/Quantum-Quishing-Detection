@@ -1,0 +1,9 @@
+model,noise_aware,threat,AURC,sigma_star
+bottleneck_fc,False,noise,58.53916666666666,0.2
+bottleneck_fc,False,occlusion,97.52,100.0
+classic_fc,False,noise,58.38364583333333,0.2
+classic_fc,False,occlusion,98.59512500000001,100.0
+mlp_head,False,noise,58.684895833333336,0.2
+mlp_head,False,occlusion,97.12337500000001,100.0
+qresnet,False,noise,58.874270833333334,0.2
+qresnet,False,occlusion,96.89050000000002,100.0

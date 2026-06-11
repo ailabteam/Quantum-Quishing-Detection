@@ -1,0 +1,22 @@
+[log] 2026-06-11T23:27:10 writing console to experiments_revision/logs/train_qresnet_20260611_232710.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/train.py", line 167, in <module>
+    _cli()
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/train.py", line 158, in _cli
+    train_model(a.model, a.data, a.out, seed=a.seed, epochs=a.epochs, lr=a.lr,
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/train.py", line 69, in train_model
+    model = build_model(model_name, pretrained=pretrained, **model_kwargs).to(device)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/models.py", line 172, in build_model
+    return NormalizedModel(_HEADS[name](**kw), pretrained=pretrained)
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/models.py", line 159, in <lambda>
+    "qresnet": lambda **kw: VQCHead(
+                            ^^^^^^^^
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/models.py", line 94, in __init__
+    import pennylane as qml
+ModuleNotFoundError: No module named 'pennylane'

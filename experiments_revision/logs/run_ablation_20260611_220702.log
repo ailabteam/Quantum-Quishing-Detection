@@ -1,0 +1,27 @@
+[log] 2026-06-11T22:07:02 writing console to experiments_revision/logs/run_ablation_20260611_220702.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[classic_fc_seed0] epoch 1/5 loss=0.0148 val_acc=100.00 val_auc=1.0000
+[classic_fc_seed0] epoch 2/5 loss=0.0001 val_acc=100.00 val_auc=1.0000
+[classic_fc_seed0] epoch 3/5 loss=0.0000 val_acc=100.00 val_auc=1.0000
+[classic_fc_seed0] epoch 4/5 loss=0.0000 val_acc=100.00 val_auc=1.0000
+[classic_fc_seed0] epoch 5/5 loss=0.0000 val_acc=100.00 val_auc=1.0000
+[classic_fc_seed0] DONE. clean test: {'acc': 99.99249999999999, 'auc': 0.9999999925, 'f1': 0.999924994374578}
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[bottleneck_fc_seed0] epoch 1/5 loss=0.1471 val_acc=99.97 val_auc=1.0000
+[bottleneck_fc_seed0] epoch 2/5 loss=0.0722 val_acc=99.85 val_auc=1.0000
+[bottleneck_fc_seed0] epoch 3/5 loss=0.0425 val_acc=100.00 val_auc=1.0000
+[bottleneck_fc_seed0] epoch 4/5 loss=0.0257 val_acc=100.00 val_auc=1.0000
+[bottleneck_fc_seed0] epoch 5/5 loss=0.0163 val_acc=100.00 val_auc=1.0000
+[bottleneck_fc_seed0] DONE. clean test: {'acc': 99.99249999999999, 'auc': 0.999999945, 'f1': 0.999924994374578}
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[mlp_head_seed0] epoch 1/5 loss=0.4578 val_acc=100.00 val_auc=1.0000
+[mlp_head_seed0] epoch 2/5 loss=0.3275 val_acc=100.00 val_auc=1.0000
+[mlp_head_seed0] epoch 3/5 loss=0.2615 val_acc=99.98 val_auc=1.0000
+[mlp_head_seed0] epoch 4/5 loss=0.2161 val_acc=100.00 val_auc=1.0000
+[mlp_head_seed0] epoch 5/5 loss=0.1816 val_acc=100.00 val_auc=1.0000
+[mlp_head_seed0] DONE. clean test: {'acc': 99.99249999999999, 'auc': 0.9999499975, 'f1': 0.9999250018749531}
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000

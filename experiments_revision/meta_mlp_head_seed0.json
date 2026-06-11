@@ -1,0 +1,19 @@
+{
+  "model": "mlp_head",
+  "seed": 0,
+  "epochs": 5,
+  "lr": 0.0001,
+  "freeze_backbone": false,
+  "noise_aware": false,
+  "head_params": 2082,
+  "trainable_params": 11178594,
+  "best_val_acc": 100.0,
+  "test": {
+    "acc": 99.99249999999999,
+    "auc": 0.9999499975,
+    "f1": 0.9999250018749531
+  },
+  "train_time_s": 419.6961989402771,
+  "model_kwargs": {},
+  "best_path": "experiments_revision/best_mlp_head_seed0.pth"
+}
