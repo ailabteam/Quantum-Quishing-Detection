@@ -70,7 +70,7 @@ def run(exp_dir, data_dir, out_csv, threats, noise_levels, occ_levels,
     rows = []
     for meta in metas:
         model = build_model(meta["model"], pretrained=False, **(meta.get("model_kwargs") or {})).to(device)
-        model.load_state_dict(torch.load(meta["best_path"], map_location=device))
+        model.load_state_dict(torch.load(meta["best_path"], map_location=device, weights_only=True))
         model.eval()
         label = os.path.splitext(os.path.basename(meta["best_path"]))[0].replace("best_", "")
         print(f"== evaluating {label} ==")

@@ -104,7 +104,7 @@ def train_model(model_name, data_dir, out_dir, seed=0, epochs=5, lr=1e-4,
             torch.save(model.state_dict(), best_path)
 
     # reload best and report clean test metrics
-    model.load_state_dict(torch.load(best_path, map_location=device))
+    model.load_state_dict(torch.load(best_path, map_location=device, weights_only=True))
     test = evaluate(model, test_loader, device)
     meta = {
         "model": model_name, "seed": seed, "epochs": epochs, "lr": lr,

@@ -30,7 +30,7 @@ def main():
     ap.add_argument("--num-workers", type=int, default=8)
     ap.add_argument("--noise-aware", action="store_true",
                     help="also train a noise-aware Q-ResNet and ResNet (R2-2)")
-    ap.add_argument("--pert-seeds", default="0,1,2,3,4")
+    ap.add_argument("--pert-seeds", default="0,1,2")
     a = ap.parse_args()
     seeds = [int(s) for s in a.seeds.split(",")]
 
