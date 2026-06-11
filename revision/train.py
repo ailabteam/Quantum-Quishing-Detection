@@ -57,7 +57,7 @@ def evaluate(model, loader, device):
 def train_model(model_name, data_dir, out_dir, seed=0, epochs=5, lr=1e-4,
                 batch_size=128, freeze_backbone=False, noise_aware=False,
                 noise_sigma_max=0.3, max_per_class=None, num_workers=8, device=None,
-                model_kwargs=None, pretrained=True):
+                model_kwargs=None, pretrained=True, log_every=200):
     set_seed(seed)
     device = device or ("cuda" if torch.cuda.is_available() else "cpu")
     model_kwargs = model_kwargs or {}
@@ -82,10 +82,13 @@ def train_model(model_name, data_dir, out_dir, seed=0, epochs=5, lr=1e-4,
     best_acc, best_path = -1.0, os.path.join(out_dir, f"best_{tag}.pth")
     t0 = time.time()
 
+    n_batches = len(train_loader)
     for epoch in range(epochs):
         model.train()
         running = 0.0
-        for x, y in train_loader:
+        ep_t0 = time.time()
+        seen = 0
+        for bi, (x, y) in enumerate(train_loader):
             x, y = x.to(device), y.to(device)
             if noise_aware:
                 x = _noise_aware_batch(x, noise_sigma_max, aug_gen).to(device)
@@ -94,6 +97,11 @@ def train_model(model_name, data_dir, out_dir, seed=0, epochs=5, lr=1e-4,
             loss.backward()
             optimizer.step()
             running += loss.item()
+            seen += y.size(0)
+            if bi % log_every == 0 or bi == n_batches - 1:
+                rate = seen / max(1e-9, time.time() - ep_t0)
+                print(f"[{tag}] epoch {epoch+1}/{epochs} batch {bi+1}/{n_batches} "
+                      f"loss={running/(bi+1):.4f} ({rate:.0f} img/s)", flush=True)
         val = evaluate(model, val_loader, device)
         train_loss = running / max(1, len(train_loader))
         print(f"[{tag}] epoch {epoch+1}/{epochs} loss={train_loss:.4f} "
@@ -141,14 +149,18 @@ def _cli():
     ap.add_argument("--ansatz", default="strong")
     ap.add_argument("--max-per-class", type=int, default=None)
     ap.add_argument("--num-workers", type=int, default=8)
+    ap.add_argument("--q-device", default="default.qubit",
+                    help="PennyLane device for the VQC, e.g. lightning.qubit (faster)")
+    ap.add_argument("--log-every", type=int, default=200, help="batches between progress prints")
     a = ap.parse_args()
     from .runlog import start_logging
     start_logging(a.out, f"train_{a.model}")
     train_model(a.model, a.data, a.out, seed=a.seed, epochs=a.epochs, lr=a.lr,
                 batch_size=a.batch_size, freeze_backbone=a.freeze_backbone,
                 noise_aware=a.noise_aware, noise_sigma_max=a.noise_sigma_max,
-                max_per_class=a.max_per_class, num_workers=a.num_workers,
-                model_kwargs={"n_qubits": a.n_qubits, "n_layers": a.n_layers, "ansatz": a.ansatz})
+                max_per_class=a.max_per_class, num_workers=a.num_workers, log_every=a.log_every,
+                model_kwargs={"n_qubits": a.n_qubits, "n_layers": a.n_layers,
+                              "ansatz": a.ansatz, "q_device": a.q_device})
 
 
 if __name__ == "__main__":

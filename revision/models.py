@@ -88,7 +88,8 @@ class VQCHead(_Head):
     AngleEmbedding's default RX). Strongly entangling ansatz, configurable depth.
     """
 
-    def __init__(self, n_qubits=4, n_layers=2, rotation="Y", ansatz="strong"):
+    def __init__(self, n_qubits=4, n_layers=2, rotation="Y", ansatz="strong",
+                 q_device="default.qubit"):
         super().__init__()
         import pennylane as qml
 
@@ -97,13 +98,22 @@ class VQCHead(_Head):
         self.ansatz = ansatz
         self.pre = nn.Linear(512, n_qubits)
 
-        dev = qml.device("default.qubit", wires=n_qubits)
+        # q_device="lightning.qubit" (pip install pennylane-lightning) is a fast
+        # C++ CPU simulator; results match default.qubit up to floating point.
+        try:
+            dev = qml.device(q_device, wires=n_qubits)
+        except Exception:
+            dev = qml.device("default.qubit", wires=n_qubits)
 
         @qml.qnode(dev, interface="torch")
         def circuit(inputs, weights):
             qml.AngleEmbedding(inputs * np.pi, wires=range(n_qubits), rotation=rotation)
             if ansatz == "strong":
-                qml.StronglyEntanglingLayers(weights, wires=range(n_qubits))
+                # ranges=[1]*L forces a nearest-neighbour circular CNOT entangler
+                # in every layer, matching the paper's Eq. (5) and Fig. 2 exactly
+                # (PennyLane's default would use range 2 in layer 2).
+                qml.StronglyEntanglingLayers(weights, wires=range(n_qubits),
+                                             ranges=[1] * n_layers)
             elif ansatz == "basic":
                 qml.BasicEntanglerLayers(weights, wires=range(n_qubits))
             else:
@@ -151,6 +161,7 @@ _HEADS = {
         n_layers=kw.get("n_layers", 2),
         rotation=kw.get("rotation", "Y"),
         ansatz=kw.get("ansatz", "strong"),
+        q_device=kw.get("q_device", "default.qubit"),
     ),
 }
 

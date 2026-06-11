@@ -32,19 +32,25 @@ def main():
     ap.add_argument("--noise-aware", action="store_true",
                     help="also train a noise-aware Q-ResNet and ResNet (R2-2)")
     ap.add_argument("--pert-seeds", default="0,1,2")
+    ap.add_argument("--q-device", default="default.qubit",
+                    help="PennyLane device for the VQC, e.g. lightning.qubit (faster)")
+    ap.add_argument("--log-every", type=int, default=200)
     a = ap.parse_args()
     start_logging(a.out, "run_ablation")
     seeds = [int(s) for s in a.seeds.split(",")]
+    qkw = {"q_device": a.q_device}
 
     for seed in seeds:
         for name in ABLATION_MODELS:
             train_model(name, a.data, a.out, seed=seed, epochs=a.epochs,
-                        batch_size=a.batch_size, num_workers=a.num_workers)
+                        batch_size=a.batch_size, num_workers=a.num_workers,
+                        log_every=a.log_every, model_kwargs=qkw)
         if a.noise_aware:
             for name in ["classic_fc", "qresnet"]:
                 train_model(name, a.data, a.out, seed=seed, epochs=a.epochs,
                             batch_size=a.batch_size, num_workers=a.num_workers,
-                            noise_aware=True, noise_sigma_max=0.3)
+                            noise_aware=True, noise_sigma_max=0.3,
+                            log_every=a.log_every, model_kwargs=qkw)
 
     robustness.run(a.out, a.data, f"{a.out}/robustness_raw.csv",
                    threats={"noise", "occlusion"},

@@ -19,7 +19,7 @@ source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate "$ENV"
 
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-pip install pennylane numpy pandas scikit-learn matplotlib pillow tqdm opencv-python-headless
+pip install pennylane pennylane-lightning numpy pandas scikit-learn matplotlib pillow tqdm opencv-python-headless
 
 python -c "import torch; print('CUDA available:', torch.cuda.is_available(), \
     torch.cuda.get_device_name(0) if torch.cuda.is_available() else '')"
