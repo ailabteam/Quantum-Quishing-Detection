@@ -1,0 +1,13 @@
+model,noise_aware,threat,AURC,sigma_star
+qresnet_q4l2strong,False,noise,73.18741666666666,0.1
+qresnet_q4l2strong,False,occlusion,97.12599999999999,100.0
+qresnet_q4l3strong,False,noise,63.73112499999999,0.08
+qresnet_q4l3strong,False,occlusion,96.9135,100.0
+qresnet_q6l2strong,False,noise,95.22220833333333,0.2
+qresnet_q6l2strong,False,occlusion,96.19833333333334,100.0
+qresnet_q6l3strong,False,noise,77.10020833333333,0.14
+qresnet_q6l3strong,False,occlusion,98.41508333333331,100.0
+qresnet_q8l2strong,False,noise,61.205916666666674,0.06
+qresnet_q8l2strong,False,occlusion,97.96050000000001,100.0
+qresnet_q8l3strong,False,noise,94.80112499999998,0.2
+qresnet_q8l3strong,False,occlusion,97.27775000000001,100.0
