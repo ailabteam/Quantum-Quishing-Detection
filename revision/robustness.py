@@ -33,6 +33,18 @@ DEFAULT_NOISE = [round(s, 3) for s in np.arange(0.0, 0.701, 0.05)]
 DEFAULT_OCCLUSION = list(range(0, 121, 20))
 
 
+def config_group(meta):
+    """A grouping key that distinguishes VQC configs but aggregates across seeds.
+
+    classic/bottleneck/mlp -> the model name. qresnet -> includes qubits/layers/
+    ansatz so the sensitivity sweep does not collapse all configs into one row.
+    """
+    mk = meta.get("model_kwargs") or {}
+    if meta["model"] == "qresnet":
+        return f"qresnet_q{mk.get('n_qubits', 4)}l{mk.get('n_layers', 2)}{mk.get('ansatz', 'strong')}"
+    return meta["model"]
+
+
 def _load_checkpoints(exp_dir):
     out = []
     for mp in sorted(glob.glob(os.path.join(exp_dir, "meta_*.json"))):
@@ -90,14 +102,16 @@ def run(exp_dir, data_dir, out_csv, threats, noise_levels, occ_levels,
         model.load_state_dict(torch.load(meta["best_path"], map_location=device, weights_only=True))
         model.eval()
         label = os.path.splitext(os.path.basename(meta["best_path"]))[0].replace("best_", "")
-        print(f"== evaluating {label} (single disk pass, {len(plan)} levels x {len(pert_seeds)} seeds) ==")
+        group = config_group(meta)
+        print(f"== evaluating {label} [{group}] (single disk pass, {len(plan)} levels x {len(pert_seeds)} seeds) ==")
         accs = _eval_model_single_pass(model, test_loader, device, plan, pert_seeds, batch_size)
         for (threat, level) in plan:
             vals = [accs[(threat, level, ps)] for ps in pert_seeds]
             for ps in pert_seeds:
-                rows.append({"label": label, "model": meta["model"], "train_seed": meta["seed"],
-                             "noise_aware": meta["noise_aware"], "threat": threat,
-                             "level": level, "pert_seed": ps, "acc": accs[(threat, level, ps)]})
+                rows.append({"label": label, "model": meta["model"], "group": group,
+                             "train_seed": meta["seed"], "noise_aware": meta["noise_aware"],
+                             "threat": threat, "level": level, "pert_seed": ps,
+                             "acc": accs[(threat, level, ps)]})
             print(f"   {threat} {level}: {np.mean(vals):.2f} +/- {np.std(vals):.2f}")
 
     os.makedirs(os.path.dirname(out_csv) or ".", exist_ok=True)
@@ -111,11 +125,12 @@ def run(exp_dir, data_dir, out_csv, threats, noise_levels, occ_levels,
 
 
 def _summarize(rows, out_csv, crit_threshold):
-    # aggregate over pert_seed AND train_seed, per (model, noise_aware, threat, level)
+    # aggregate over pert_seed AND train_seed, per (group, noise_aware, threat, level)
+    # the "model" column holds the group key (distinguishes VQC configs, pools seeds)
     import collections
     bucket = collections.defaultdict(list)
     for r in rows:
-        bucket[(r["model"], r["noise_aware"], r["threat"], r["level"])].append(r["acc"])
+        bucket[(r.get("group", r["model"]), r["noise_aware"], r["threat"], r["level"])].append(r["acc"])
     summ = []
     for (model, na, threat, level), accs in sorted(bucket.items()):
         summ.append({"model": model, "noise_aware": na, "threat": threat, "level": level,

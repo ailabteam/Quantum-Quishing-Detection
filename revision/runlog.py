@@ -67,13 +67,14 @@ def write_report(out_dir, out_path=None):
              f"_generated {datetime.datetime.now().isoformat(timespec='seconds')}_", ""]
 
     # ---- clean performance, aggregated across seeds ----
+    from .robustness import config_group
     lines += ["## Clean test performance (aggregated across seeds)", ""]
     if metas:
         agg = defaultdict(lambda: {"acc": [], "auc": [], "f1": [], "seeds": [],
                                    "head_params": None, "trainable_params": None,
                                    "train_time_s": []})
         for m in metas:
-            key = (m["model"], m.get("noise_aware", False))
+            key = (config_group(m), m.get("noise_aware", False))
             a = agg[key]
             t = m.get("test", {})
             a["acc"].append(t.get("acc")); a["auc"].append(t.get("auc")); a["f1"].append(t.get("f1"))
@@ -147,16 +148,18 @@ def _ablation_verdict(metric_rows):
     """Auto-summarize the make-or-break comparison for the noise threat."""
     noise = {r["model"]: float(r["AURC"]) for r in metric_rows
              if r.get("threat") == "noise" and r.get("noise_aware") in ("False", False)}
-    q = noise.get("qresnet")
-    if q is None:
+    qgroups = {k: v for k, v in noise.items() if k.startswith("qresnet")}
+    if not qgroups:
         return "_qresnet noise AURC not available for verdict._"
+    best_q_name = max(qgroups, key=qgroups.get)
+    q = qgroups[best_q_name]
     classical = {k: v for k, v in noise.items() if k in ("bottleneck_fc", "mlp_head", "classic_fc")}
     if not classical:
         return "_no classical ablation heads for verdict._"
     best_classical_name = max(classical, key=classical.get)
     best_classical = classical[best_classical_name]
     delta = q - best_classical
-    verdict = (f"**Ablation verdict (noise AURC):** qresnet={q:.2f} vs best classical head "
+    verdict = (f"**Ablation verdict (noise AURC):** best VQC `{best_q_name}`={q:.2f} vs best classical head "
                f"`{best_classical_name}`={best_classical:.2f} -> gap {delta:+.2f}. ")
     if delta > 2.0:
         verdict += "Quantum head leads; check this exceeds cross-seed std before claiming advantage."

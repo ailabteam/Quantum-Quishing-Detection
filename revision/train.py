@@ -77,7 +77,13 @@ def train_model(model_name, data_dir, out_dir, seed=0, epochs=5, lr=1e-4,
     aug_gen = perturbation_generator(seed + 10_000)
 
     os.makedirs(out_dir, exist_ok=True)
-    tag = f"{model_name}_seed{seed}" + ("_noiseaware" if noise_aware else "")
+    # qresnet tag carries the VQC config so sensitivity-sweep runs do not collide
+    if model_name == "qresnet":
+        base_tag = (f"qresnet_q{model_kwargs.get('n_qubits', 4)}"
+                    f"l{model_kwargs.get('n_layers', 2)}{model_kwargs.get('ansatz', 'strong')}_seed{seed}")
+    else:
+        base_tag = f"{model_name}_seed{seed}"
+    tag = base_tag + ("_noiseaware" if noise_aware else "")
     log_rows = []
     best_acc, best_path = -1.0, os.path.join(out_dir, f"best_{tag}.pth")
     t0 = time.time()
