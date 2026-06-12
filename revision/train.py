@@ -83,10 +83,13 @@ def train_model(model_name, data_dir, out_dir, seed=0, epochs=5, lr=1e-4,
     aug_gen = perturbation_generator(seed + 10_000, device=device)
 
     os.makedirs(out_dir, exist_ok=True)
-    # qresnet tag carries the VQC config so sensitivity-sweep runs do not collide
+    # tag carries the bottleneck/VQC config so sweeps and width-controls don't collide
+    _b = model_kwargs.get("n_qubits", 4)
     if model_name == "qresnet":
-        base_tag = (f"qresnet_q{model_kwargs.get('n_qubits', 4)}"
+        base_tag = (f"qresnet_q{_b}"
                     f"l{model_kwargs.get('n_layers', 2)}{model_kwargs.get('ansatz', 'strong')}_seed{seed}")
+    elif model_name in ("bottleneck_fc", "mlp_head") and _b != 4:
+        base_tag = f"{model_name}_b{_b}_seed{seed}"
     else:
         base_tag = f"{model_name}_seed{seed}"
     tag = base_tag + ("_noiseaware" if noise_aware else "")
