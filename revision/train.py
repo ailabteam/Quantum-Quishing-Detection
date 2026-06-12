@@ -29,9 +29,15 @@ from .seeding import set_seed, perturbation_generator
 
 
 def _noise_aware_batch(x, sigma_max, gen):
-    """Apply a random-strength Gaussian corruption to a fraction of the batch."""
-    sigma = float(torch.rand(1, generator=gen).item()) * sigma_max
-    return add_gaussian_noise(x, sigma, gen)
+    """Per-sample Gaussian augmentation: each image gets sigma ~ U(0, sigma_max).
+
+    Standard noise-injection training (the Cua-2 defense). The generator must live
+    on the same device as x (a CPU generator with a CUDA tensor raises at runtime).
+    """
+    n = x.size(0)
+    sig = torch.rand(n, 1, 1, 1, generator=gen, device=x.device) * sigma_max
+    noise = torch.randn(x.shape, generator=gen, device=x.device, dtype=x.dtype)
+    return torch.clamp(x + noise * sig, 0.0, 1.0)
 
 
 def evaluate(model, loader, device):
@@ -74,13 +80,16 @@ def train_model(model_name, data_dir, out_dir, seed=0, epochs=5, lr=1e-4,
     criterion = nn.CrossEntropyLoss()
     params = [p for p in model.parameters() if p.requires_grad]
     optimizer = torch.optim.Adam(params, lr=lr)
-    aug_gen = perturbation_generator(seed + 10_000)
+    aug_gen = perturbation_generator(seed + 10_000, device=device)
 
     os.makedirs(out_dir, exist_ok=True)
-    # qresnet tag carries the VQC config so sensitivity-sweep runs do not collide
+    # tag carries the bottleneck/VQC config so sweeps and width-controls don't collide
+    _b = model_kwargs.get("n_qubits", 4)
     if model_name == "qresnet":
-        base_tag = (f"qresnet_q{model_kwargs.get('n_qubits', 4)}"
+        base_tag = (f"qresnet_q{_b}"
                     f"l{model_kwargs.get('n_layers', 2)}{model_kwargs.get('ansatz', 'strong')}_seed{seed}")
+    elif model_name in ("bottleneck_fc", "mlp_head") and _b != 4:
+        base_tag = f"{model_name}_b{_b}_seed{seed}"
     else:
         base_tag = f"{model_name}_seed{seed}"
     tag = base_tag + ("_noiseaware" if noise_aware else "")

@@ -40,9 +40,14 @@ def config_group(meta):
     ansatz so the sensitivity sweep does not collapse all configs into one row.
     """
     mk = meta.get("model_kwargs") or {}
-    if meta["model"] == "qresnet":
+    m = meta["model"]
+    if m == "qresnet":
         return f"qresnet_q{mk.get('n_qubits', 4)}l{mk.get('n_layers', 2)}{mk.get('ansatz', 'strong')}"
-    return meta["model"]
+    if m in ("bottleneck_fc", "mlp_head"):
+        b = mk.get("n_qubits", 4)
+        # keep b=4 as the plain name (back-compat); wider bottlenecks get a suffix
+        return m if b == 4 else f"{m}_b{b}"
+    return m
 
 
 def _load_checkpoints(exp_dir):
