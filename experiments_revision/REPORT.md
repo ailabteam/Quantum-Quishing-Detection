@@ -1,5 +1,5 @@
 # Revision experiment report
-_generated 2026-06-12T02:22:41_
+_generated 2026-06-12T12:21:37_
 
 ## Clean test performance (aggregated across seeds)
 
@@ -14,16 +14,16 @@ _generated 2026-06-12T02:22:41_
 
 | model | noise_aware | threat | AURC | sigma* |
 |---|---|---|---|---|
-| bottleneck_fc | False | noise | 58.54 | 0.2 |
-| classic_fc | False | noise | 58.38 | 0.2 |
-| mlp_head | False | noise | 58.68 | 0.2 |
-| qresnet | False | noise | 58.87 | 0.2 |
-| bottleneck_fc | False | occlusion | 97.52 | 100.0 |
-| classic_fc | False | occlusion | 98.60 | 100.0 |
-| mlp_head | False | occlusion | 97.12 | 100.0 |
-| qresnet | False | occlusion | 96.89 | 100.0 |
+| bottleneck_fc | False | noise | 83.54 | 0.14 |
+| classic_fc | False | noise | 75.19 | 0.12 |
+| mlp_head | False | noise | 88.75 | 0.2 |
+| qresnet | False | noise | 80.17 | 0.14 |
+| bottleneck_fc | False | occlusion | 97.50 | 100.0 |
+| classic_fc | False | occlusion | 98.58 | 100.0 |
+| mlp_head | False | occlusion | 97.13 | 100.0 |
+| qresnet | False | occlusion | 96.88 | 100.0 |
 
-**Ablation verdict (noise AURC):** qresnet=58.87 vs best classical head `mlp_head`=58.68 -> gap +0.19. Within ~2 pts of the best classical head; likely no clear quantum advantage, reframe honestly.
+**Ablation verdict (noise AURC):** qresnet=80.17 vs best classical head `mlp_head`=88.75 -> gap -8.58. Classical head leads; the quantum advantage does NOT hold here, reframe honestly.
 
 ## Accuracy vs severity (mean±std)
 
@@ -32,19 +32,23 @@ _generated 2026-06-12T02:22:41_
 | level | bottleneck_fc | classic_fc | mlp_head | qresnet |
 |---|---|---|---|---|
 | 0 | 100.0±0.0 | 100.0±0.0 | 100.0±0.0 | 100.0±0.0 |
-| 0.2 | 52.5±0.0 | 50.1±0.0 | 51.4±0.1 | 50.2±0.0 |
-| 0.3 | 50.2±0.0 | 50.0±0.0 | 50.0±0.0 | 51.9±0.1 |
-| 0.4 | 49.1±0.2 | 50.2±0.0 | 50.0±0.0 | 50.2±0.0 |
-| 0.5 | 49.2±0.1 | 50.0±0.0 | 50.0±0.0 | 50.5±0.0 |
-| 0.6 | 48.1±0.2 | 50.0±0.0 | 50.0±0.0 | 50.7±0.2 |
+| 0.02 | 100.0±0.0 | 100.0±0.0 | 100.0±0.0 | 100.0±0.0 |
+| 0.04 | 100.0±0.0 | 99.8±0.0 | 100.0±0.0 | 100.0±0.0 |
+| 0.06 | 99.9±0.0 | 97.1±0.0 | 100.0±0.0 | 99.7±0.0 |
+| 0.08 | 99.2±0.0 | 88.2±0.1 | 99.9±0.0 | 98.0±0.0 |
+| 0.1 | 94.3±0.1 | 74.7±0.2 | 99.3±0.0 | 90.7±0.1 |
+| 0.12 | 81.8±0.1 | 61.7±0.2 | 95.8±0.0 | 75.3±0.2 |
+| 0.14 | 68.4±0.1 | 53.7±0.1 | 85.3±0.1 | 59.5±0.1 |
+| 0.16 | 59.5±0.1 | 51.0±0.0 | 70.6±0.1 | 52.1±0.1 |
+| 0.2 | 52.5±0.1 | 50.1±0.0 | 51.4±0.1 | 50.2±0.0 |
 
 ### occlusion
 
 | level | bottleneck_fc | classic_fc | mlp_head | qresnet |
 |---|---|---|---|---|
 | 0 | 100.0±0.0 | 100.0±0.0 | 100.0±0.0 | 100.0±0.0 |
-| 40 | 98.8±0.0 | 99.6±0.0 | 98.0±0.0 | 97.4±0.0 |
-| 80 | 95.8±0.1 | 97.3±0.0 | 95.4±0.0 | 95.2±0.1 |
-| 100 | 92.5±0.0 | 95.6±0.0 | 93.2±0.0 | 94.0±0.0 |
+| 40 | 98.8±0.0 | 99.6±0.0 | 98.0±0.0 | 97.3±0.0 |
+| 80 | 95.7±0.1 | 97.3±0.0 | 95.4±0.0 | 95.1±0.1 |
+| 100 | 92.5±0.0 | 95.6±0.1 | 93.1±0.0 | 94.0±0.0 |
 
 _models marked * are noise-aware trained._
