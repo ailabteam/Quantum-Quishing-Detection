@@ -1,0 +1,142 @@
+[log] 2026-06-12T13:31:36 writing console to experiments_vqc_sens/logs/robustness_20260612_133136.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+== evaluating qresnet_q4l2strong_seed0 [qresnet_q4l2strong] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 100.00 +/- 0.00
+   noise 0.06: 96.40 +/- 0.12
+   noise 0.08: 80.60 +/- 0.10
+   noise 0.1: 68.57 +/- 0.07
+   noise 0.12: 59.92 +/- 0.15
+   noise 0.14: 53.63 +/- 0.11
+   noise 0.16: 50.88 +/- 0.01
+   noise 0.2: 50.03 +/- 0.01
+   occlusion 0: 100.00 +/- 0.00
+   occlusion 40: 97.82 +/- 0.03
+   occlusion 80: 95.40 +/- 0.06
+   occlusion 100: 93.80 +/- 0.04
+== evaluating qresnet_q4l3strong_seed0 [qresnet_q4l3strong] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 100.00 +/- 0.00
+   noise 0.06: 78.52 +/- 0.18
+   noise 0.08: 53.55 +/- 0.01
+   noise 0.1: 50.75 +/- 0.11
+   noise 0.12: 50.80 +/- 0.02
+   noise 0.14: 50.16 +/- 0.02
+   noise 0.16: 50.01 +/- 0.00
+   noise 0.2: 50.00 +/- 0.00
+   occlusion 0: 100.00 +/- 0.00
+   occlusion 40: 97.63 +/- 0.08
+   occlusion 80: 95.11 +/- 0.08
+   occlusion 100: 93.28 +/- 0.06
+== evaluating qresnet_q6l2strong_seed0 [qresnet_q6l2strong] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 100.00 +/- 0.00
+   noise 0.06: 99.97 +/- 0.01
+   noise 0.08: 99.79 +/- 0.00
+   noise 0.1: 99.26 +/- 0.03
+   noise 0.12: 97.71 +/- 0.03
+   noise 0.14: 95.85 +/- 0.10
+   noise 0.16: 92.19 +/- 0.11
+   noise 0.2: 71.39 +/- 0.07
+   occlusion 0: 100.00 +/- 0.00
+   occlusion 40: 96.88 +/- 0.06
+   occlusion 80: 94.20 +/- 0.02
+   occlusion 100: 91.89 +/- 0.02
+== evaluating qresnet_q6l3strong_seed0 [qresnet_q6l3strong] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 99.99 +/- 0.00
+   noise 0.06: 95.59 +/- 0.04
+   noise 0.08: 83.01 +/- 0.10
+   noise 0.1: 76.31 +/- 0.17
+   noise 0.12: 71.02 +/- 0.17
+   noise 0.14: 62.78 +/- 0.24
+   noise 0.16: 56.54 +/- 0.20
+   noise 0.2: 51.91 +/- 0.23
+   occlusion 0: 99.99 +/- 0.00
+   occlusion 40: 99.16 +/- 0.02
+   occlusion 80: 97.57 +/- 0.04
+   occlusion 100: 94.81 +/- 0.07
+== evaluating qresnet_q8l2strong_seed0 [qresnet_q8l2strong] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 100.00 +/- 0.00
+   noise 0.06: 67.43 +/- 0.09
+   noise 0.08: 52.09 +/- 0.07
+   noise 0.1: 50.11 +/- 0.01
+   noise 0.12: 50.01 +/- 0.01
+   noise 0.14: 50.00 +/- 0.00
+   noise 0.16: 50.00 +/- 0.00
+   noise 0.2: 50.00 +/- 0.00
+   occlusion 0: 100.00 +/- 0.00
+   occlusion 40: 98.65 +/- 0.02
+   occlusion 80: 96.74 +/- 0.06
+   occlusion 100: 94.79 +/- 0.08
+== evaluating qresnet_q8l3strong_seed0 [qresnet_q8l3strong] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 99.99 +/- 0.00
+   noise 0.06: 99.91 +/- 0.00
+   noise 0.08: 99.35 +/- 0.01
+   noise 0.1: 98.05 +/- 0.08
+   noise 0.12: 95.77 +/- 0.04
+   noise 0.14: 92.17 +/- 0.03
+   noise 0.16: 87.61 +/- 0.10
+   noise 0.2: 81.46 +/- 0.13
+   occlusion 0: 99.99 +/- 0.00
+   occlusion 40: 98.81 +/- 0.03
+   occlusion 80: 94.92 +/- 0.08
+   occlusion 100: 92.81 +/- 0.06
+[SUCCESS] raw per-seed results -> experiments_revision/robustness_raw.csv
+[SUCCESS] summary -> experiments_revision/robustness_raw_summary.csv
+
+--- derived robustness metrics ---
+/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py:155: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  aurc = float(np.trapz(ys, xs) / (xs.max() - xs.min())) if xs.max() > xs.min() else float(ys.mean())
+   qresnet_q4l2strong na=False noise     AURC= 73.19  sigma*=0.1
+   qresnet_q4l2strong na=False occlusion AURC= 97.13  sigma*=100.0
+   qresnet_q4l3strong na=False noise     AURC= 63.73  sigma*=0.08
+   qresnet_q4l3strong na=False occlusion AURC= 96.91  sigma*=100.0
+   qresnet_q6l2strong na=False noise     AURC= 95.22  sigma*=0.2
+   qresnet_q6l2strong na=False occlusion AURC= 96.20  sigma*=100.0
+   qresnet_q6l3strong na=False noise     AURC= 77.10  sigma*=0.14
+   qresnet_q6l3strong na=False occlusion AURC= 98.42  sigma*=100.0
+   qresnet_q8l2strong na=False noise     AURC= 61.21  sigma*=0.06
+   qresnet_q8l2strong na=False occlusion AURC= 97.96  sigma*=100.0
+   qresnet_q8l3strong na=False noise     AURC= 94.80  sigma*=0.2
+   qresnet_q8l3strong na=False occlusion AURC= 97.28  sigma*=100.0
+[report] wrote experiments_vqc_sens/REPORT.md

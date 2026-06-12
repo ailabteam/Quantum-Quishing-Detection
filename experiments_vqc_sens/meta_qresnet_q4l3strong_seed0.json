@@ -1,0 +1,23 @@
+{
+  "model": "qresnet",
+  "seed": 0,
+  "epochs": 3,
+  "lr": 0.0001,
+  "freeze_backbone": false,
+  "noise_aware": false,
+  "head_params": 2098,
+  "trainable_params": 11178610,
+  "best_val_acc": 100.0,
+  "test": {
+    "acc": 99.995,
+    "auc": 1.0,
+    "f1": 0.999950002499875
+  },
+  "train_time_s": 471.29878187179565,
+  "model_kwargs": {
+    "n_qubits": 4,
+    "n_layers": 3,
+    "ansatz": "strong"
+  },
+  "best_path": "experiments_vqc_sens/best_qresnet_q4l3strong_seed0.pth"
+}
