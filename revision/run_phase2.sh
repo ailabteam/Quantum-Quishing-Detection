@@ -29,8 +29,9 @@ for s in 0 1 2; do
   python -m revision.train --model bottleneck_fc  --data $DATA --seed $s --epochs 3 --n-qubits 6 $COMMON --out $CTRL
   python -m revision.train --model mlp_head        --data $DATA --seed $s --epochs 3 --n-qubits 6 $COMMON --out $CTRL
 done
-# 1 perturbation seed is enough; the 3 TRAIN seeds give the stability error bars
-python -m revision.robustness --exp-dir $CTRL --data $DATA \
+# 1 perturbation seed is enough; the 3 TRAIN seeds give the stability error bars.
+# --out MUST point inside $CTRL or it defaults to experiments_revision and gets clobbered.
+python -m revision.robustness --exp-dir $CTRL --data $DATA --out $CTRL/robustness_raw.csv \
     --pert-seeds 0 --noise-levels 0,0.08,0.10,0.12,0.14,0.16,0.20 --occ-levels 0,100 \
     --batch-size 128 --num-workers 4
 
@@ -48,6 +49,7 @@ python -m revision.train --model classic_fc --data $DATA --seed 0 --epochs 5 --n
 python -m revision.train --model mlp_head    --data $DATA --seed 0 --epochs 5 --noise-aware --noise-sigma-max 0.15 $COMMON
 # regenerate the MAIN report with clean + noise-aware curves side by side
 python -m revision.robustness --exp-dir experiments_revision --data $DATA \
+    --out experiments_revision/robustness_raw.csv \
     --pert-seeds 0,1,2 --noise-levels 0,0.06,0.08,0.10,0.12,0.14,0.16,0.20 --occ-levels 0,40,80,100 \
     --batch-size 128 --num-workers 4
 

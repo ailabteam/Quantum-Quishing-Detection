@@ -88,14 +88,22 @@ def audit(data_dir, out_dir, limit_per_class=None):
 
     classes = sorted(d for d in os.listdir(data_dir)
                      if os.path.isdir(os.path.join(data_dir, d)))
+    exts = (".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff", ".webp")
     for cls in classes:
         cdir = os.path.join(data_dir, cls)
-        files = sorted(f for f in os.listdir(cdir)
-                       if f.lower().endswith((".png", ".jpg", ".jpeg", ".bmp")))
+        # recurse: the Kaggle set nests images below the class folder, which a
+        # flat os.listdir misses (ImageFolder recurses, which is why training saw
+        # them but a flat listing returned 0 files).
+        paths = []
+        for base, _dirs, fnames in os.walk(cdir):
+            for fn in fnames:
+                if fn.lower().endswith(exts):
+                    paths.append(os.path.join(base, fn))
+        paths = sorted(paths)
         if limit_per_class:
-            files = files[:limit_per_class]
-        for fn in files:
-            path = os.path.join(cdir, fn)
+            paths = paths[:limit_per_class]
+        for path in paths:
+            rel = os.path.relpath(path, data_dir)  # relative to root for eval_subset
             payload = _decode_one(path, pyzbar, cv2)
             ptype = _payload_type(payload)
             plen = len(payload) if payload else 0
@@ -104,10 +112,13 @@ def audit(data_dir, out_dir, limit_per_class=None):
                 per_class_decoded[cls][0] += 1
                 per_class_len[cls].append(plen)
             per_class_type[cls][ptype] += 1
-            rows.append({"file": os.path.join(cls, fn), "class": cls,
+            rows.append({"file": rel, "class": cls,
                          "decoded": int(payload is not None),
                          "payload_len": plen, "payload_type": ptype})
         print(f"[audit] {cls}: {per_class_decoded[cls][0]}/{per_class_decoded[cls][1]} decoded")
+
+    if not rows:
+        raise SystemExit(f"No images found under {data_dir}/<class>/. Check the path/structure.")
 
     with open(os.path.join(out_dir, "audit_per_image.csv"), "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
