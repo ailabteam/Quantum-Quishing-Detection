@@ -1,0 +1,3 @@
+class,n,decode_rate,len_mean,len_std,len_median,types
+benign,10000,0.9498,80.08043798694462,5.841474138193009,83.0,"{'text': 9498, 'undecoded': 502}"
+malicious,10000,0.9466,79.65803929854215,7.584262016910796,84.0,"{'text': 9466, 'undecoded': 534}"
