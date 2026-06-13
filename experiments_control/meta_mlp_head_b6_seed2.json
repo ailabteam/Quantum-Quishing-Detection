@@ -1,0 +1,24 @@
+{
+  "model": "mlp_head",
+  "seed": 2,
+  "epochs": 3,
+  "lr": 0.0001,
+  "freeze_backbone": false,
+  "noise_aware": false,
+  "head_params": 3116,
+  "trainable_params": 11179628,
+  "best_val_acc": 100.0,
+  "test": {
+    "acc": 99.985,
+    "auc": 0.9999998200000002,
+    "f1": 0.999849992499625
+  },
+  "train_time_s": 412.74782276153564,
+  "model_kwargs": {
+    "n_qubits": 6,
+    "n_layers": 2,
+    "ansatz": "strong",
+    "q_device": "default.qubit"
+  },
+  "best_path": "experiments_control/best_mlp_head_b6_seed2.pth"
+}

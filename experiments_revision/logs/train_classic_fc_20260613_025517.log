@@ -1,0 +1,44 @@
+[log] 2026-06-13T02:55:17 writing console to experiments_revision/logs/train_classic_fc_20260613_025517.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[classic_fc_seed0_noiseaware] epoch 1/5 batch 1/1094 loss=0.7567 (67 img/s)
+[classic_fc_seed0_noiseaware] epoch 1/5 batch 201/1094 loss=0.1275 (1260 img/s)
+[classic_fc_seed0_noiseaware] epoch 1/5 batch 401/1094 loss=0.0663 (1301 img/s)
+[classic_fc_seed0_noiseaware] epoch 1/5 batch 601/1094 loss=0.0453 (1318 img/s)
+[classic_fc_seed0_noiseaware] epoch 1/5 batch 801/1094 loss=0.0347 (1318 img/s)
+[classic_fc_seed0_noiseaware] epoch 1/5 batch 1001/1094 loss=0.0280 (1316 img/s)
+[classic_fc_seed0_noiseaware] epoch 1/5 batch 1094/1094 loss=0.0257 (1316 img/s)
+[classic_fc_seed0_noiseaware] epoch 1/5 loss=0.0257 val_acc=99.98 val_auc=1.0000
+[classic_fc_seed0_noiseaware] epoch 2/5 batch 1/1094 loss=0.0001 (166 img/s)
+[classic_fc_seed0_noiseaware] epoch 2/5 batch 201/1094 loss=0.0004 (1315 img/s)
+[classic_fc_seed0_noiseaware] epoch 2/5 batch 401/1094 loss=0.0003 (1336 img/s)
+[classic_fc_seed0_noiseaware] epoch 2/5 batch 601/1094 loss=0.0002 (1341 img/s)
+[classic_fc_seed0_noiseaware] epoch 2/5 batch 801/1094 loss=0.0003 (1351 img/s)
+[classic_fc_seed0_noiseaware] epoch 2/5 batch 1001/1094 loss=0.0008 (1357 img/s)
+[classic_fc_seed0_noiseaware] epoch 2/5 batch 1094/1094 loss=0.0007 (1359 img/s)
+[classic_fc_seed0_noiseaware] epoch 2/5 loss=0.0007 val_acc=100.00 val_auc=1.0000
+[classic_fc_seed0_noiseaware] epoch 3/5 batch 1/1094 loss=0.0001 (171 img/s)
+[classic_fc_seed0_noiseaware] epoch 3/5 batch 201/1094 loss=0.0002 (1092 img/s)
+[classic_fc_seed0_noiseaware] epoch 3/5 batch 401/1094 loss=0.0001 (1094 img/s)
+[classic_fc_seed0_noiseaware] epoch 3/5 batch 601/1094 loss=0.0001 (1108 img/s)
+[classic_fc_seed0_noiseaware] epoch 3/5 batch 801/1094 loss=0.0001 (1111 img/s)
+[classic_fc_seed0_noiseaware] epoch 3/5 batch 1001/1094 loss=0.0001 (1113 img/s)
+[classic_fc_seed0_noiseaware] epoch 3/5 batch 1094/1094 loss=0.0005 (1114 img/s)
+[classic_fc_seed0_noiseaware] epoch 3/5 loss=0.0005 val_acc=99.97 val_auc=1.0000
+[classic_fc_seed0_noiseaware] epoch 4/5 batch 1/1094 loss=0.0006 (184 img/s)
+[classic_fc_seed0_noiseaware] epoch 4/5 batch 201/1094 loss=0.0001 (1227 img/s)
+[classic_fc_seed0_noiseaware] epoch 4/5 batch 401/1094 loss=0.0008 (1244 img/s)
+[classic_fc_seed0_noiseaware] epoch 4/5 batch 601/1094 loss=0.0007 (1244 img/s)
+[classic_fc_seed0_noiseaware] epoch 4/5 batch 801/1094 loss=0.0005 (1238 img/s)
+[classic_fc_seed0_noiseaware] epoch 4/5 batch 1001/1094 loss=0.0004 (1235 img/s)
+[classic_fc_seed0_noiseaware] epoch 4/5 batch 1094/1094 loss=0.0004 (1233 img/s)
+[classic_fc_seed0_noiseaware] epoch 4/5 loss=0.0004 val_acc=100.00 val_auc=1.0000
+[classic_fc_seed0_noiseaware] epoch 5/5 batch 1/1094 loss=0.0000 (169 img/s)
+[classic_fc_seed0_noiseaware] epoch 5/5 batch 201/1094 loss=0.0000 (1228 img/s)
+[classic_fc_seed0_noiseaware] epoch 5/5 batch 401/1094 loss=0.0000 (1251 img/s)
+[classic_fc_seed0_noiseaware] epoch 5/5 batch 601/1094 loss=0.0000 (1260 img/s)
+[classic_fc_seed0_noiseaware] epoch 5/5 batch 801/1094 loss=0.0000 (1265 img/s)
+[classic_fc_seed0_noiseaware] epoch 5/5 batch 1001/1094 loss=0.0000 (1265 img/s)
+[classic_fc_seed0_noiseaware] epoch 5/5 batch 1094/1094 loss=0.0000 (1266 img/s)
+[classic_fc_seed0_noiseaware] epoch 5/5 loss=0.0000 val_acc=100.00 val_auc=1.0000
+[classic_fc_seed0_noiseaware] DONE. clean test: {'acc': 99.995, 'auc': 0.9999999924999999, 'f1': 0.999949997499875}
