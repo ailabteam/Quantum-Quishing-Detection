@@ -1,0 +1,31 @@
+# Conda-only environment for the revision/ experiments (no sudo / no system libs).
+#
+#   conda env create -f revision/environment-revision.yml
+#   conda activate quishing-rev
+#
+# Notes for the conda-only server (RTX 4090):
+#  - The VQC uses PennyLane's default.qubit simulator, so NO lightning.gpu /
+#    cuQuantum / system CUDA toolkit is required. The ResNet-18 backbone uses the
+#    conda-provided pytorch-cuda runtime (also no sudo).
+#  - QR decoding for the bias audit uses OpenCV from conda-forge, which bundles
+#    its own libraries; pyzbar (which needs a system zbar lib) is NOT required.
+name: quishing-rev
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - pillow
+  - tqdm
+  - opencv            # conda-forge build, used by revision/audit_dataset.py (no zbar/sudo)
+  - pytorch
+  - torchvision
+  - pytorch-cuda=12.1 # GPU runtime for the ResNet backbone, installed in userspace
+  - pip:
+      - pennylane>=0.36

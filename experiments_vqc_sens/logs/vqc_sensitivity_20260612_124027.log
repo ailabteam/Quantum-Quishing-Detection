@@ -1,0 +1,175 @@
+[log] 2026-06-12T12:40:27 writing console to experiments_vqc_sens/logs/vqc_sensitivity_20260612_124027.log
+
+#### VQC config: qubits=4 layers=2 ansatz=strong ####
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[qresnet_q4l2strong_seed0] epoch 1/3 batch 1/1094 loss=0.7058 (65 img/s)
+[qresnet_q4l2strong_seed0] epoch 1/3 batch 201/1094 loss=0.5301 (1183 img/s)
+[qresnet_q4l2strong_seed0] epoch 1/3 batch 401/1094 loss=0.4935 (1212 img/s)
+[qresnet_q4l2strong_seed0] epoch 1/3 batch 601/1094 loss=0.4716 (1237 img/s)
+[qresnet_q4l2strong_seed0] epoch 1/3 batch 801/1094 loss=0.4553 (1245 img/s)
+[qresnet_q4l2strong_seed0] epoch 1/3 batch 1001/1094 loss=0.4416 (1248 img/s)
+[qresnet_q4l2strong_seed0] epoch 1/3 batch 1094/1094 loss=0.4358 (1250 img/s)
+[qresnet_q4l2strong_seed0] epoch 1/3 loss=0.4358 val_acc=99.99 val_auc=1.0000
+[qresnet_q4l2strong_seed0] epoch 2/3 batch 1/1094 loss=0.3690 (161 img/s)
+[qresnet_q4l2strong_seed0] epoch 2/3 batch 201/1094 loss=0.3604 (1195 img/s)
+[qresnet_q4l2strong_seed0] epoch 2/3 batch 401/1094 loss=0.3521 (1203 img/s)
+[qresnet_q4l2strong_seed0] epoch 2/3 batch 601/1094 loss=0.3444 (1205 img/s)
+[qresnet_q4l2strong_seed0] epoch 2/3 batch 801/1094 loss=0.3369 (1208 img/s)
+[qresnet_q4l2strong_seed0] epoch 2/3 batch 1001/1094 loss=0.3300 (1210 img/s)
+[qresnet_q4l2strong_seed0] epoch 2/3 batch 1094/1094 loss=0.3267 (1211 img/s)
+[qresnet_q4l2strong_seed0] epoch 2/3 loss=0.3267 val_acc=100.00 val_auc=1.0000
+[qresnet_q4l2strong_seed0] epoch 3/3 batch 1/1094 loss=0.2867 (168 img/s)
+[qresnet_q4l2strong_seed0] epoch 3/3 batch 201/1094 loss=0.2812 (1080 img/s)
+[qresnet_q4l2strong_seed0] epoch 3/3 batch 401/1094 loss=0.2745 (1084 img/s)
+[qresnet_q4l2strong_seed0] epoch 3/3 batch 601/1094 loss=0.2681 (1085 img/s)
+[qresnet_q4l2strong_seed0] epoch 3/3 batch 801/1094 loss=0.2619 (1086 img/s)
+[qresnet_q4l2strong_seed0] epoch 3/3 batch 1001/1094 loss=0.2558 (1084 img/s)
+[qresnet_q4l2strong_seed0] epoch 3/3 batch 1094/1094 loss=0.2529 (1083 img/s)
+[qresnet_q4l2strong_seed0] epoch 3/3 loss=0.2529 val_acc=100.00 val_auc=1.0000
+[qresnet_q4l2strong_seed0] DONE. clean test: {'acc': 99.995, 'auc': 0.999999985, 'f1': 0.999950002499875}
+
+#### VQC config: qubits=4 layers=3 ansatz=strong ####
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[qresnet_q4l3strong_seed0] epoch 1/3 batch 1/1094 loss=0.7016 (150 img/s)
+[qresnet_q4l3strong_seed0] epoch 1/3 batch 201/1094 loss=0.4872 (1177 img/s)
+[qresnet_q4l3strong_seed0] epoch 1/3 batch 401/1094 loss=0.4378 (1192 img/s)
+[qresnet_q4l3strong_seed0] epoch 1/3 batch 601/1094 loss=0.4094 (1198 img/s)
+[qresnet_q4l3strong_seed0] epoch 1/3 batch 801/1094 loss=0.3882 (1205 img/s)
+[qresnet_q4l3strong_seed0] epoch 1/3 batch 1001/1094 loss=0.3703 (1208 img/s)
+[qresnet_q4l3strong_seed0] epoch 1/3 batch 1094/1094 loss=0.3627 (1212 img/s)
+[qresnet_q4l3strong_seed0] epoch 1/3 loss=0.3627 val_acc=100.00 val_auc=1.0000
+[qresnet_q4l3strong_seed0] epoch 2/3 batch 1/1094 loss=0.2674 (147 img/s)
+[qresnet_q4l3strong_seed0] epoch 2/3 batch 201/1094 loss=0.2637 (1071 img/s)
+[qresnet_q4l3strong_seed0] epoch 2/3 batch 401/1094 loss=0.2532 (1078 img/s)
+[qresnet_q4l3strong_seed0] epoch 2/3 batch 601/1094 loss=0.2416 (1082 img/s)
+[qresnet_q4l3strong_seed0] epoch 2/3 batch 801/1094 loss=0.2303 (1084 img/s)
+[qresnet_q4l3strong_seed0] epoch 2/3 batch 1001/1094 loss=0.2175 (1086 img/s)
+[qresnet_q4l3strong_seed0] epoch 2/3 batch 1094/1094 loss=0.2113 (1086 img/s)
+[qresnet_q4l3strong_seed0] epoch 2/3 loss=0.2113 val_acc=100.00 val_auc=1.0000
+[qresnet_q4l3strong_seed0] epoch 3/3 batch 1/1094 loss=0.1330 (148 img/s)
+[qresnet_q4l3strong_seed0] epoch 3/3 batch 201/1094 loss=0.1307 (1046 img/s)
+[qresnet_q4l3strong_seed0] epoch 3/3 batch 401/1094 loss=0.1234 (1062 img/s)
+[qresnet_q4l3strong_seed0] epoch 3/3 batch 601/1094 loss=0.1171 (1055 img/s)
+[qresnet_q4l3strong_seed0] epoch 3/3 batch 801/1094 loss=0.1111 (1052 img/s)
+[qresnet_q4l3strong_seed0] epoch 3/3 batch 1001/1094 loss=0.1056 (1048 img/s)
+[qresnet_q4l3strong_seed0] epoch 3/3 batch 1094/1094 loss=0.1033 (1046 img/s)
+[qresnet_q4l3strong_seed0] epoch 3/3 loss=0.1033 val_acc=100.00 val_auc=1.0000
+[qresnet_q4l3strong_seed0] DONE. clean test: {'acc': 99.995, 'auc': 1.0, 'f1': 0.999950002499875}
+
+#### VQC config: qubits=6 layers=2 ansatz=strong ####
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[qresnet_q6l2strong_seed0] epoch 1/3 batch 1/1094 loss=0.6911 (141 img/s)
+[qresnet_q6l2strong_seed0] epoch 1/3 batch 201/1094 loss=0.6396 (1107 img/s)
+[qresnet_q6l2strong_seed0] epoch 1/3 batch 401/1094 loss=0.6146 (1121 img/s)
+[qresnet_q6l2strong_seed0] epoch 1/3 batch 601/1094 loss=0.5934 (1124 img/s)
+[qresnet_q6l2strong_seed0] epoch 1/3 batch 801/1094 loss=0.5727 (1130 img/s)
+[qresnet_q6l2strong_seed0] epoch 1/3 batch 1001/1094 loss=0.5513 (1135 img/s)
+[qresnet_q6l2strong_seed0] epoch 1/3 batch 1094/1094 loss=0.5410 (1138 img/s)
+[qresnet_q6l2strong_seed0] epoch 1/3 loss=0.5410 val_acc=100.00 val_auc=1.0000
+[qresnet_q6l2strong_seed0] epoch 2/3 batch 1/1094 loss=0.4060 (168 img/s)
+[qresnet_q6l2strong_seed0] epoch 2/3 batch 201/1094 loss=0.3922 (1062 img/s)
+[qresnet_q6l2strong_seed0] epoch 2/3 batch 401/1094 loss=0.3693 (1090 img/s)
+[qresnet_q6l2strong_seed0] epoch 2/3 batch 601/1094 loss=0.3475 (1103 img/s)
+[qresnet_q6l2strong_seed0] epoch 2/3 batch 801/1094 loss=0.3294 (1109 img/s)
+[qresnet_q6l2strong_seed0] epoch 2/3 batch 1001/1094 loss=0.3104 (1113 img/s)
+[qresnet_q6l2strong_seed0] epoch 2/3 batch 1094/1094 loss=0.3020 (1116 img/s)
+[qresnet_q6l2strong_seed0] epoch 2/3 loss=0.3020 val_acc=99.98 val_auc=1.0000
+[qresnet_q6l2strong_seed0] epoch 3/3 batch 1/1094 loss=0.2049 (154 img/s)
+[qresnet_q6l2strong_seed0] epoch 3/3 batch 201/1094 loss=0.1918 (1130 img/s)
+[qresnet_q6l2strong_seed0] epoch 3/3 batch 401/1094 loss=0.1794 (1150 img/s)
+[qresnet_q6l2strong_seed0] epoch 3/3 batch 601/1094 loss=0.1677 (1156 img/s)
+[qresnet_q6l2strong_seed0] epoch 3/3 batch 801/1094 loss=0.1575 (1159 img/s)
+[qresnet_q6l2strong_seed0] epoch 3/3 batch 1001/1094 loss=0.1482 (1157 img/s)
+[qresnet_q6l2strong_seed0] epoch 3/3 batch 1094/1094 loss=0.1441 (1155 img/s)
+[qresnet_q6l2strong_seed0] epoch 3/3 loss=0.1441 val_acc=100.00 val_auc=1.0000
+[qresnet_q6l2strong_seed0] DONE. clean test: {'acc': 99.995, 'auc': 0.9999984399999999, 'f1': 0.999950002499875}
+
+#### VQC config: qubits=6 layers=3 ansatz=strong ####
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[qresnet_q6l3strong_seed0] epoch 1/3 batch 1/1094 loss=0.6984 (137 img/s)
+[qresnet_q6l3strong_seed0] epoch 1/3 batch 201/1094 loss=0.5693 (945 img/s)
+[qresnet_q6l3strong_seed0] epoch 1/3 batch 401/1094 loss=0.5280 (963 img/s)
+[qresnet_q6l3strong_seed0] epoch 1/3 batch 601/1094 loss=0.4995 (969 img/s)
+[qresnet_q6l3strong_seed0] epoch 1/3 batch 801/1094 loss=0.4727 (973 img/s)
+[qresnet_q6l3strong_seed0] epoch 1/3 batch 1001/1094 loss=0.4460 (976 img/s)
+[qresnet_q6l3strong_seed0] epoch 1/3 batch 1094/1094 loss=0.4345 (978 img/s)
+[qresnet_q6l3strong_seed0] epoch 1/3 loss=0.4345 val_acc=100.00 val_auc=1.0000
+[qresnet_q6l3strong_seed0] epoch 2/3 batch 1/1094 loss=0.3009 (148 img/s)
+[qresnet_q6l3strong_seed0] epoch 2/3 batch 201/1094 loss=0.2836 (948 img/s)
+[qresnet_q6l3strong_seed0] epoch 2/3 batch 401/1094 loss=0.2675 (962 img/s)
+[qresnet_q6l3strong_seed0] epoch 2/3 batch 601/1094 loss=0.2520 (966 img/s)
+[qresnet_q6l3strong_seed0] epoch 2/3 batch 801/1094 loss=0.2373 (969 img/s)
+[qresnet_q6l3strong_seed0] epoch 2/3 batch 1001/1094 loss=0.2238 (968 img/s)
+[qresnet_q6l3strong_seed0] epoch 2/3 batch 1094/1094 loss=0.2176 (959 img/s)
+[qresnet_q6l3strong_seed0] epoch 2/3 loss=0.2176 val_acc=99.95 val_auc=1.0000
+[qresnet_q6l3strong_seed0] epoch 3/3 batch 1/1094 loss=0.1401 (151 img/s)
+[qresnet_q6l3strong_seed0] epoch 3/3 batch 201/1094 loss=0.1279 (942 img/s)
+[qresnet_q6l3strong_seed0] epoch 3/3 batch 401/1094 loss=0.1182 (948 img/s)
+[qresnet_q6l3strong_seed0] epoch 3/3 batch 601/1094 loss=0.1103 (959 img/s)
+[qresnet_q6l3strong_seed0] epoch 3/3 batch 801/1094 loss=0.1029 (958 img/s)
+[qresnet_q6l3strong_seed0] epoch 3/3 batch 1001/1094 loss=0.0963 (965 img/s)
+[qresnet_q6l3strong_seed0] epoch 3/3 batch 1094/1094 loss=0.0935 (966 img/s)
+[qresnet_q6l3strong_seed0] epoch 3/3 loss=0.0935 val_acc=100.00 val_auc=1.0000
+[qresnet_q6l3strong_seed0] DONE. clean test: {'acc': 99.99, 'auc': 0.9999866074999999, 'f1': 0.99990000499975}
+
+#### VQC config: qubits=8 layers=2 ansatz=strong ####
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[qresnet_q8l2strong_seed0] epoch 1/3 batch 1/1094 loss=0.6942 (139 img/s)
+[qresnet_q8l2strong_seed0] epoch 1/3 batch 201/1094 loss=0.6043 (932 img/s)
+[qresnet_q8l2strong_seed0] epoch 1/3 batch 401/1094 loss=0.5723 (950 img/s)
+[qresnet_q8l2strong_seed0] epoch 1/3 batch 601/1094 loss=0.5493 (956 img/s)
+[qresnet_q8l2strong_seed0] epoch 1/3 batch 801/1094 loss=0.5303 (959 img/s)
+[qresnet_q8l2strong_seed0] epoch 1/3 batch 1001/1094 loss=0.5132 (960 img/s)
+[qresnet_q8l2strong_seed0] epoch 1/3 batch 1094/1094 loss=0.5057 (959 img/s)
+[qresnet_q8l2strong_seed0] epoch 1/3 loss=0.5057 val_acc=100.00 val_auc=1.0000
+[qresnet_q8l2strong_seed0] epoch 2/3 batch 1/1094 loss=0.4200 (147 img/s)
+[qresnet_q8l2strong_seed0] epoch 2/3 batch 201/1094 loss=0.4054 (933 img/s)
+[qresnet_q8l2strong_seed0] epoch 2/3 batch 401/1094 loss=0.3924 (943 img/s)
+[qresnet_q8l2strong_seed0] epoch 2/3 batch 601/1094 loss=0.3800 (953 img/s)
+[qresnet_q8l2strong_seed0] epoch 2/3 batch 801/1094 loss=0.3678 (954 img/s)
+[qresnet_q8l2strong_seed0] epoch 2/3 batch 1001/1094 loss=0.3561 (953 img/s)
+[qresnet_q8l2strong_seed0] epoch 2/3 batch 1094/1094 loss=0.3508 (952 img/s)
+[qresnet_q8l2strong_seed0] epoch 2/3 loss=0.3508 val_acc=100.00 val_auc=1.0000
+[qresnet_q8l2strong_seed0] epoch 3/3 batch 1/1094 loss=0.2884 (166 img/s)
+[qresnet_q8l2strong_seed0] epoch 3/3 batch 201/1094 loss=0.2789 (925 img/s)
+[qresnet_q8l2strong_seed0] epoch 3/3 batch 401/1094 loss=0.2691 (926 img/s)
+[qresnet_q8l2strong_seed0] epoch 3/3 batch 601/1094 loss=0.2598 (939 img/s)
+[qresnet_q8l2strong_seed0] epoch 3/3 batch 801/1094 loss=0.2525 (951 img/s)
+[qresnet_q8l2strong_seed0] epoch 3/3 batch 1001/1094 loss=0.2438 (958 img/s)
+[qresnet_q8l2strong_seed0] epoch 3/3 batch 1094/1094 loss=0.2399 (960 img/s)
+[qresnet_q8l2strong_seed0] epoch 3/3 loss=0.2399 val_acc=100.00 val_auc=1.0000
+[qresnet_q8l2strong_seed0] DONE. clean test: {'acc': 99.995, 'auc': 0.9999999975, 'f1': 0.999950002499875}
+
+#### VQC config: qubits=8 layers=3 ansatz=strong ####
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[qresnet_q8l3strong_seed0] epoch 1/3 batch 1/1094 loss=0.7331 (157 img/s)
+[qresnet_q8l3strong_seed0] epoch 1/3 batch 201/1094 loss=0.6122 (791 img/s)
+[qresnet_q8l3strong_seed0] epoch 1/3 batch 401/1094 loss=0.5750 (800 img/s)
+[qresnet_q8l3strong_seed0] epoch 1/3 batch 601/1094 loss=0.5485 (807 img/s)
+[qresnet_q8l3strong_seed0] epoch 1/3 batch 801/1094 loss=0.5252 (807 img/s)
+[qresnet_q8l3strong_seed0] epoch 1/3 batch 1001/1094 loss=0.5026 (808 img/s)
+[qresnet_q8l3strong_seed0] epoch 1/3 batch 1094/1094 loss=0.4926 (809 img/s)
+[qresnet_q8l3strong_seed0] epoch 1/3 loss=0.4926 val_acc=100.00 val_auc=1.0000
+[qresnet_q8l3strong_seed0] epoch 2/3 batch 1/1094 loss=0.3707 (137 img/s)
+[qresnet_q8l3strong_seed0] epoch 2/3 batch 201/1094 loss=0.3375 (796 img/s)
+[qresnet_q8l3strong_seed0] epoch 2/3 batch 401/1094 loss=0.3159 (790 img/s)
+[qresnet_q8l3strong_seed0] epoch 2/3 batch 601/1094 loss=0.2952 (769 img/s)
+[qresnet_q8l3strong_seed0] epoch 2/3 batch 801/1094 loss=0.2740 (754 img/s)
+[qresnet_q8l3strong_seed0] epoch 2/3 batch 1001/1094 loss=0.2528 (746 img/s)
+[qresnet_q8l3strong_seed0] epoch 2/3 batch 1094/1094 loss=0.2434 (743 img/s)
+[qresnet_q8l3strong_seed0] epoch 2/3 loss=0.2434 val_acc=99.99 val_auc=1.0000
+[qresnet_q8l3strong_seed0] epoch 3/3 batch 1/1094 loss=0.1368 (141 img/s)
+[qresnet_q8l3strong_seed0] epoch 3/3 batch 201/1094 loss=0.1207 (745 img/s)
+[qresnet_q8l3strong_seed0] epoch 3/3 batch 401/1094 loss=0.1088 (774 img/s)
+[qresnet_q8l3strong_seed0] epoch 3/3 batch 601/1094 loss=0.0990 (784 img/s)
+[qresnet_q8l3strong_seed0] epoch 3/3 batch 801/1094 loss=0.0906 (789 img/s)
+[qresnet_q8l3strong_seed0] epoch 3/3 batch 1001/1094 loss=0.0845 (794 img/s)
+[qresnet_q8l3strong_seed0] epoch 3/3 batch 1094/1094 loss=0.0815 (795 img/s)
+[qresnet_q8l3strong_seed0] epoch 3/3 loss=0.0815 val_acc=100.00 val_auc=1.0000
+[qresnet_q8l3strong_seed0] DONE. clean test: {'acc': 99.99, 'auc': 0.99999474, 'f1': 0.99990000499975}

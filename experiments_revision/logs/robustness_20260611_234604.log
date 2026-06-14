@@ -1,0 +1,48 @@
+[log] 2026-06-11T23:46:04 writing console to experiments_revision/logs/robustness_20260611_234604.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+== evaluating bottleneck_fc_seed0 ==
+   noise 0.0: 99.99 +/- 0.00
+   noise 0.05: 99.97 +/- 0.01
+Traceback (most recent call last):
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py", line 161, in <module>
+    _cli()
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py", line 151, in _cli
+    run(a.exp_dir, a.data, a.out,
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py", line 83, in run
+    accs = _eval_corrupted(model, test_loader, threat, level, device, pert_seeds)
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py", line 53, in _eval_corrupted
+    pred = model(x).argmax(1).cpu()
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/models.py", line 152, in forward
+    return self.head(self.backbone(x))
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torchvision/models/resnet.py", line 285, in forward
+    return self._forward_impl(x)
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torchvision/models/resnet.py", line 275, in _forward_impl
+    x = self.layer3(x)
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torchvision/models/resnet.py", line 99, in forward
+    if self.downsample is not None:
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1918, in __getattr__
+    def __getattr__(self, name: str) -> Any:
+KeyboardInterrupt

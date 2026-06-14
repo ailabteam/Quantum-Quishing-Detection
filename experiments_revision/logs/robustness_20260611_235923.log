@@ -1,0 +1,90 @@
+[log] 2026-06-11T23:59:23 writing console to experiments_revision/logs/robustness_20260611_235923.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+== evaluating bottleneck_fc_seed0 (single disk pass, 10 levels x 2 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 99.99 +/- 0.00
+   noise 0.2: 52.49 +/- 0.01
+   noise 0.3: 50.16 +/- 0.03
+   noise 0.4: 49.11 +/- 0.17
+   noise 0.5: 49.18 +/- 0.09
+   noise 0.6: 48.11 +/- 0.19
+   occlusion 0: 99.99 +/- 0.00
+   occlusion 40: 98.84 +/- 0.04
+   occlusion 80: 95.78 +/- 0.08
+   occlusion 100: 92.48 +/- 0.05
+== evaluating classic_fc_seed0 (single disk pass, 10 levels x 2 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 99.99 +/- 0.00
+   noise 0.2: 50.11 +/- 0.03
+   noise 0.3: 49.96 +/- 0.00
+   noise 0.4: 50.18 +/- 0.03
+   noise 0.5: 50.00 +/- 0.00
+   noise 0.6: 50.00 +/- 0.00
+   occlusion 0: 99.99 +/- 0.00
+   occlusion 40: 99.60 +/- 0.03
+   occlusion 80: 97.32 +/- 0.00
+   occlusion 100: 95.58 +/- 0.04
+== evaluating mlp_head_seed0 (single disk pass, 10 levels x 2 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 99.99 +/- 0.00
+   noise 0.2: 51.41 +/- 0.08
+   noise 0.3: 50.00 +/- 0.00
+   noise 0.4: 50.00 +/- 0.00
+   noise 0.5: 50.00 +/- 0.00
+   noise 0.6: 50.00 +/- 0.00
+   occlusion 0: 99.99 +/- 0.00
+   occlusion 40: 97.95 +/- 0.03
+   occlusion 80: 95.43 +/- 0.04
+   occlusion 100: 93.15 +/- 0.02
+== evaluating qresnet_seed0 (single disk pass, 10 levels x 2 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 100.00 +/- 0.00
+   noise 0.2: 50.21 +/- 0.04
+   noise 0.3: 51.89 +/- 0.14
+   noise 0.4: 50.22 +/- 0.00
+   noise 0.5: 50.46 +/- 0.01
+   noise 0.6: 50.74 +/- 0.16
+   occlusion 0: 100.00 +/- 0.00
+   occlusion 40: 97.35 +/- 0.04
+   occlusion 80: 95.16 +/- 0.12
+   occlusion 100: 94.02 +/- 0.01
+[SUCCESS] raw per-seed results -> experiments_revision/robustness_raw.csv
+[SUCCESS] summary -> experiments_revision/robustness_raw_summary.csv
+
+--- derived robustness metrics ---
+/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py:140: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  aurc = float(np.trapz(ys, xs) / (xs.max() - xs.min())) if xs.max() > xs.min() else float(ys.mean())
+   bottleneck_fc  na=False noise     AURC= 58.54  sigma*=0.2
+   bottleneck_fc  na=False occlusion AURC= 97.52  sigma*=100.0
+   classic_fc     na=False noise     AURC= 58.38  sigma*=0.2
+   classic_fc     na=False occlusion AURC= 98.60  sigma*=100.0
+   mlp_head       na=False noise     AURC= 58.68  sigma*=0.2
+   mlp_head       na=False occlusion AURC= 97.12  sigma*=100.0
+   qresnet        na=False noise     AURC= 58.87  sigma*=0.2
+   qresnet        na=False occlusion AURC= 96.89  sigma*=100.0
+[report] wrote experiments_revision/REPORT.md

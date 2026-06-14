@@ -1,0 +1,28 @@
+[log] 2026-06-12T22:16:29 writing console to experiments_control/logs/train_bottleneck_fc_20260612_221629.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[bottleneck_fc_b6_seed1] epoch 1/3 batch 1/1094 loss=0.6902 (71 img/s)
+[bottleneck_fc_b6_seed1] epoch 1/3 batch 201/1094 loss=0.2823 (1195 img/s)
+[bottleneck_fc_b6_seed1] epoch 1/3 batch 401/1094 loss=0.2361 (1237 img/s)
+[bottleneck_fc_b6_seed1] epoch 1/3 batch 601/1094 loss=0.2094 (1255 img/s)
+[bottleneck_fc_b6_seed1] epoch 1/3 batch 801/1094 loss=0.1895 (1263 img/s)
+[bottleneck_fc_b6_seed1] epoch 1/3 batch 1001/1094 loss=0.1734 (1269 img/s)
+[bottleneck_fc_b6_seed1] epoch 1/3 batch 1094/1094 loss=0.1668 (1271 img/s)
+[bottleneck_fc_b6_seed1] epoch 1/3 loss=0.1668 val_acc=100.00 val_auc=1.0000
+[bottleneck_fc_b6_seed1] epoch 2/3 batch 1/1094 loss=0.0925 (177 img/s)
+[bottleneck_fc_b6_seed1] epoch 2/3 batch 201/1094 loss=0.0866 (1226 img/s)
+[bottleneck_fc_b6_seed1] epoch 2/3 batch 401/1094 loss=0.0807 (1225 img/s)
+[bottleneck_fc_b6_seed1] epoch 2/3 batch 601/1094 loss=0.0760 (1229 img/s)
+[bottleneck_fc_b6_seed1] epoch 2/3 batch 801/1094 loss=0.0716 (1229 img/s)
+[bottleneck_fc_b6_seed1] epoch 2/3 batch 1001/1094 loss=0.0673 (1231 img/s)
+[bottleneck_fc_b6_seed1] epoch 2/3 batch 1094/1094 loss=0.0654 (1233 img/s)
+[bottleneck_fc_b6_seed1] epoch 2/3 loss=0.0654 val_acc=100.00 val_auc=1.0000
+[bottleneck_fc_b6_seed1] epoch 3/3 batch 1/1094 loss=0.0447 (183 img/s)
+[bottleneck_fc_b6_seed1] epoch 3/3 batch 201/1094 loss=0.0419 (1333 img/s)
+[bottleneck_fc_b6_seed1] epoch 3/3 batch 401/1094 loss=0.0397 (1346 img/s)
+[bottleneck_fc_b6_seed1] epoch 3/3 batch 601/1094 loss=0.0374 (1351 img/s)
+[bottleneck_fc_b6_seed1] epoch 3/3 batch 801/1094 loss=0.0355 (1357 img/s)
+[bottleneck_fc_b6_seed1] epoch 3/3 batch 1001/1094 loss=0.0337 (1359 img/s)
+[bottleneck_fc_b6_seed1] epoch 3/3 batch 1094/1094 loss=0.0329 (1359 img/s)
+[bottleneck_fc_b6_seed1] epoch 3/3 loss=0.0329 val_acc=100.00 val_auc=1.0000
+[bottleneck_fc_b6_seed1] DONE. clean test: {'acc': 99.99, 'auc': 0.9999999775, 'f1': 0.99989999499975}

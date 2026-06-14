@@ -1,0 +1,11 @@
+[log] 2026-06-13T20:43:52 writing console to experiments_revision/logs/eval_subset_20260613_204352.log
+--> [INFO] CSV subset: 5078 images, classes {'benign': 0, 'malicious': 1}
+bottleneck_fc seed0: subset acc=99.98 auc=1.0000 f1=0.9998 (full-test acc was 99.99) -> drop +0.01
+classic_fc seed0: subset acc=100.00 auc=1.0000 f1=1.0000 (full-test acc was 99.99) -> drop -0.01
+classic_fc seed0: subset acc=100.00 auc=1.0000 f1=1.0000 (full-test acc was 100.00) -> drop -0.00
+mlp_head seed0: subset acc=100.00 auc=1.0000 f1=1.0000 (full-test acc was 99.99) -> drop -0.01
+mlp_head seed0: subset acc=98.74 auc=0.9874 f1=0.9876 (full-test acc was 99.23) -> drop +0.50
+qresnet_q4l2strong seed0: subset acc=99.98 auc=0.9999 f1=0.9998 (full-test acc was 100.00) -> drop +0.02
+
+[SUCCESS] subset evaluation -> experiments_revision/subset_eval.csv
+If subset_acc is much lower than fulltest_acc, the payload-length shortcut is confirmed.

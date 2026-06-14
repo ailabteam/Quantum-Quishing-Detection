@@ -1,0 +1,142 @@
+[log] 2026-06-13T03:17:14 writing console to experiments_revision/logs/robustness_20260613_031714.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+== evaluating bottleneck_fc_seed0 [bottleneck_fc] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 99.99 +/- 0.00
+   noise 0.06: 99.94 +/- 0.01
+   noise 0.08: 99.18 +/- 0.05
+   noise 0.1: 94.35 +/- 0.11
+   noise 0.12: 81.79 +/- 0.08
+   noise 0.14: 68.38 +/- 0.09
+   noise 0.16: 59.51 +/- 0.08
+   noise 0.2: 52.52 +/- 0.05
+   occlusion 0: 99.99 +/- 0.00
+   occlusion 40: 98.84 +/- 0.04
+   occlusion 80: 95.73 +/- 0.10
+   occlusion 100: 92.47 +/- 0.04
+== evaluating classic_fc_seed0 [classic_fc] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 99.99 +/- 0.00
+   noise 0.06: 97.11 +/- 0.05
+   noise 0.08: 88.25 +/- 0.10
+   noise 0.1: 74.75 +/- 0.18
+   noise 0.12: 61.69 +/- 0.19
+   noise 0.14: 53.74 +/- 0.09
+   noise 0.16: 51.02 +/- 0.02
+   noise 0.2: 50.13 +/- 0.03
+   occlusion 0: 99.99 +/- 0.00
+   occlusion 40: 99.59 +/- 0.03
+   occlusion 80: 97.31 +/- 0.02
+   occlusion 100: 95.55 +/- 0.06
+== evaluating classic_fc_seed0_noiseaware [classic_fc] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 100.00 +/- 0.00
+   noise 0.06: 99.99 +/- 0.00
+   noise 0.08: 99.99 +/- 0.00
+   noise 0.1: 99.99 +/- 0.00
+   noise 0.12: 99.99 +/- 0.00
+   noise 0.14: 99.99 +/- 0.00
+   noise 0.16: 99.98 +/- 0.00
+   noise 0.2: 99.92 +/- 0.01
+   occlusion 0: 100.00 +/- 0.00
+   occlusion 40: 99.83 +/- 0.00
+   occlusion 80: 99.08 +/- 0.05
+   occlusion 100: 97.32 +/- 0.09
+== evaluating mlp_head_seed0 [mlp_head] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 99.99 +/- 0.00
+   noise 0.06: 99.98 +/- 0.01
+   noise 0.08: 99.92 +/- 0.03
+   noise 0.1: 99.30 +/- 0.01
+   noise 0.12: 95.75 +/- 0.04
+   noise 0.14: 85.31 +/- 0.10
+   noise 0.16: 70.55 +/- 0.07
+   noise 0.2: 51.42 +/- 0.07
+   occlusion 0: 99.99 +/- 0.00
+   occlusion 40: 97.96 +/- 0.03
+   occlusion 80: 95.44 +/- 0.04
+   occlusion 100: 93.14 +/- 0.03
+== evaluating mlp_head_seed0_noiseaware [mlp_head] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 99.23 +/- 0.00
+   noise 0.06: 99.23 +/- 0.00
+   noise 0.08: 99.23 +/- 0.00
+   noise 0.1: 99.23 +/- 0.00
+   noise 0.12: 99.22 +/- 0.00
+   noise 0.14: 99.21 +/- 0.00
+   noise 0.16: 99.21 +/- 0.00
+   noise 0.2: 99.18 +/- 0.01
+   occlusion 0: 99.23 +/- 0.00
+   occlusion 40: 98.85 +/- 0.02
+   occlusion 80: 98.03 +/- 0.04
+   occlusion 100: 96.55 +/- 0.03
+== evaluating qresnet_seed0 [qresnet_q4l2strong] (single disk pass, 12 levels x 3 seeds) ==
+   ...batch 0
+   ...batch 50
+   ...batch 100
+   ...batch 150
+   ...batch 200
+   ...batch 250
+   ...batch 300
+   noise 0.0: 100.00 +/- 0.00
+   noise 0.06: 99.73 +/- 0.02
+   noise 0.08: 98.04 +/- 0.02
+   noise 0.1: 90.70 +/- 0.09
+   noise 0.12: 75.31 +/- 0.17
+   noise 0.14: 59.51 +/- 0.15
+   noise 0.16: 52.15 +/- 0.06
+   noise 0.2: 50.20 +/- 0.03
+   occlusion 0: 100.00 +/- 0.00
+   occlusion 40: 97.34 +/- 0.04
+   occlusion 80: 95.14 +/- 0.10
+   occlusion 100: 94.00 +/- 0.03
+[SUCCESS] raw per-seed results -> experiments_revision/robustness_raw.csv
+[SUCCESS] summary -> experiments_revision/robustness_raw_summary.csv
+
+--- derived robustness metrics ---
+/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py:160: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  aurc = float(np.trapz(ys, xs) / (xs.max() - xs.min())) if xs.max() > xs.min() else float(ys.mean())
+   bottleneck_fc  na=False noise     AURC= 83.54  sigma*=0.14
+   bottleneck_fc  na=False occlusion AURC= 97.50  sigma*=100.0
+   classic_fc     na=False noise     AURC= 74.93  sigma*=0.12
+   classic_fc     na=False occlusion AURC= 98.58  sigma*=100.0
+   classic_fc     na=True noise     AURC= 99.98  sigma*=0.2
+   classic_fc     na=True occlusion AURC= 99.39  sigma*=100.0
+   mlp_head       na=False noise     AURC= 88.75  sigma*=0.2
+   mlp_head       na=False occlusion AURC= 97.13  sigma*=100.0
+   mlp_head       na=True noise     AURC= 99.22  sigma*=0.2
+   mlp_head       na=True occlusion AURC= 98.45  sigma*=100.0
+   qresnet_q4l2strong na=False noise     AURC= 80.14  sigma*=0.14
+   qresnet_q4l2strong na=False occlusion AURC= 96.88  sigma*=100.0
+[report] wrote experiments_revision/REPORT.md

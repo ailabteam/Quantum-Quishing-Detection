@@ -1,0 +1,24 @@
+{
+  "model": "qresnet",
+  "seed": 1,
+  "epochs": 3,
+  "lr": 0.0001,
+  "freeze_backbone": false,
+  "noise_aware": false,
+  "head_params": 4170,
+  "trainable_params": 11180682,
+  "best_val_acc": 99.995,
+  "test": {
+    "acc": 99.99,
+    "auc": 0.9999925199999999,
+    "f1": 0.9999
+  },
+  "train_time_s": 524.6687908172607,
+  "model_kwargs": {
+    "n_qubits": 8,
+    "n_layers": 2,
+    "ansatz": "strong",
+    "q_device": "default.qubit"
+  },
+  "best_path": "experiments_control/best_qresnet_q8l2strong_seed1.pth"
+}

@@ -1,0 +1,28 @@
+[log] 2026-06-12T21:51:59 writing console to experiments_control/logs/train_mlp_head_20260612_215159.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[mlp_head_b6_seed0] epoch 1/3 batch 1/1094 loss=0.8019 (71 img/s)
+[mlp_head_b6_seed0] epoch 1/3 batch 201/1094 loss=0.5434 (1190 img/s)
+[mlp_head_b6_seed0] epoch 1/3 batch 401/1094 loss=0.5046 (1232 img/s)
+[mlp_head_b6_seed0] epoch 1/3 batch 601/1094 loss=0.4760 (1249 img/s)
+[mlp_head_b6_seed0] epoch 1/3 batch 801/1094 loss=0.4496 (1261 img/s)
+[mlp_head_b6_seed0] epoch 1/3 batch 1001/1094 loss=0.4223 (1262 img/s)
+[mlp_head_b6_seed0] epoch 1/3 batch 1094/1094 loss=0.4102 (1263 img/s)
+[mlp_head_b6_seed0] epoch 1/3 loss=0.4102 val_acc=100.00 val_auc=1.0000
+[mlp_head_b6_seed0] epoch 2/3 batch 1/1094 loss=0.2535 (192 img/s)
+[mlp_head_b6_seed0] epoch 2/3 batch 201/1094 loss=0.2527 (1147 img/s)
+[mlp_head_b6_seed0] epoch 2/3 batch 401/1094 loss=0.2347 (1154 img/s)
+[mlp_head_b6_seed0] epoch 2/3 batch 601/1094 loss=0.2181 (1153 img/s)
+[mlp_head_b6_seed0] epoch 2/3 batch 801/1094 loss=0.2028 (1154 img/s)
+[mlp_head_b6_seed0] epoch 2/3 batch 1001/1094 loss=0.1893 (1154 img/s)
+[mlp_head_b6_seed0] epoch 2/3 batch 1094/1094 loss=0.1833 (1155 img/s)
+[mlp_head_b6_seed0] epoch 2/3 loss=0.1833 val_acc=100.00 val_auc=1.0000
+[mlp_head_b6_seed0] epoch 3/3 batch 1/1094 loss=0.1042 (192 img/s)
+[mlp_head_b6_seed0] epoch 3/3 batch 201/1094 loss=0.1052 (1100 img/s)
+[mlp_head_b6_seed0] epoch 3/3 batch 401/1094 loss=0.0993 (1106 img/s)
+[mlp_head_b6_seed0] epoch 3/3 batch 601/1094 loss=0.0918 (1107 img/s)
+[mlp_head_b6_seed0] epoch 3/3 batch 801/1094 loss=0.0851 (1107 img/s)
+[mlp_head_b6_seed0] epoch 3/3 batch 1001/1094 loss=0.0794 (1105 img/s)
+[mlp_head_b6_seed0] epoch 3/3 batch 1094/1094 loss=0.0769 (1104 img/s)
+[mlp_head_b6_seed0] epoch 3/3 loss=0.0769 val_acc=100.00 val_auc=1.0000
+[mlp_head_b6_seed0] DONE. clean test: {'acc': 100.0, 'auc': 1.0, 'f1': 1.0}

@@ -1,0 +1,28 @@
+[log] 2026-06-12T22:23:20 writing console to experiments_control/logs/train_mlp_head_20260612_222320.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[mlp_head_b6_seed1] epoch 1/3 batch 1/1094 loss=0.7014 (74 img/s)
+[mlp_head_b6_seed1] epoch 1/3 batch 201/1094 loss=0.5519 (1267 img/s)
+[mlp_head_b6_seed1] epoch 1/3 batch 401/1094 loss=0.5088 (1307 img/s)
+[mlp_head_b6_seed1] epoch 1/3 batch 601/1094 loss=0.4730 (1321 img/s)
+[mlp_head_b6_seed1] epoch 1/3 batch 801/1094 loss=0.4399 (1322 img/s)
+[mlp_head_b6_seed1] epoch 1/3 batch 1001/1094 loss=0.4092 (1316 img/s)
+[mlp_head_b6_seed1] epoch 1/3 batch 1094/1094 loss=0.3957 (1316 img/s)
+[mlp_head_b6_seed1] epoch 1/3 loss=0.3957 val_acc=100.00 val_auc=1.0000
+[mlp_head_b6_seed1] epoch 2/3 batch 1/1094 loss=0.2357 (176 img/s)
+[mlp_head_b6_seed1] epoch 2/3 batch 201/1094 loss=0.2176 (1053 img/s)
+[mlp_head_b6_seed1] epoch 2/3 batch 401/1094 loss=0.2004 (1065 img/s)
+[mlp_head_b6_seed1] epoch 2/3 batch 601/1094 loss=0.1831 (1068 img/s)
+[mlp_head_b6_seed1] epoch 2/3 batch 801/1094 loss=0.1675 (1076 img/s)
+[mlp_head_b6_seed1] epoch 2/3 batch 1001/1094 loss=0.1539 (1075 img/s)
+[mlp_head_b6_seed1] epoch 2/3 batch 1094/1094 loss=0.1481 (1074 img/s)
+[mlp_head_b6_seed1] epoch 2/3 loss=0.1481 val_acc=100.00 val_auc=1.0000
+[mlp_head_b6_seed1] epoch 3/3 batch 1/1094 loss=0.0824 (191 img/s)
+[mlp_head_b6_seed1] epoch 3/3 batch 201/1094 loss=0.0753 (1059 img/s)
+[mlp_head_b6_seed1] epoch 3/3 batch 401/1094 loss=0.0694 (1064 img/s)
+[mlp_head_b6_seed1] epoch 3/3 batch 601/1094 loss=0.0641 (1066 img/s)
+[mlp_head_b6_seed1] epoch 3/3 batch 801/1094 loss=0.0595 (1069 img/s)
+[mlp_head_b6_seed1] epoch 3/3 batch 1001/1094 loss=0.0554 (1065 img/s)
+[mlp_head_b6_seed1] epoch 3/3 batch 1094/1094 loss=0.0536 (1066 img/s)
+[mlp_head_b6_seed1] epoch 3/3 loss=0.0536 val_acc=100.00 val_auc=1.0000
+[mlp_head_b6_seed1] DONE. clean test: {'acc': 99.9875, 'auc': 0.999935935, 'f1': 0.999875009374297}

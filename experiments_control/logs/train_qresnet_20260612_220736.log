@@ -1,0 +1,28 @@
+[log] 2026-06-12T22:07:36 writing console to experiments_control/logs/train_qresnet_20260612_220736.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+[qresnet_q8l2strong_seed1] epoch 1/3 batch 1/1094 loss=0.7980 (66 img/s)
+[qresnet_q8l2strong_seed1] epoch 1/3 batch 201/1094 loss=0.6606 (921 img/s)
+[qresnet_q8l2strong_seed1] epoch 1/3 batch 401/1094 loss=0.6332 (951 img/s)
+[qresnet_q8l2strong_seed1] epoch 1/3 batch 601/1094 loss=0.6135 (965 img/s)
+[qresnet_q8l2strong_seed1] epoch 1/3 batch 801/1094 loss=0.5968 (969 img/s)
+[qresnet_q8l2strong_seed1] epoch 1/3 batch 1001/1094 loss=0.5813 (973 img/s)
+[qresnet_q8l2strong_seed1] epoch 1/3 batch 1094/1094 loss=0.5743 (973 img/s)
+[qresnet_q8l2strong_seed1] epoch 1/3 loss=0.5743 val_acc=94.98 val_auc=1.0000
+[qresnet_q8l2strong_seed1] epoch 2/3 batch 1/1094 loss=0.4938 (150 img/s)
+[qresnet_q8l2strong_seed1] epoch 2/3 batch 201/1094 loss=0.4747 (933 img/s)
+[qresnet_q8l2strong_seed1] epoch 2/3 batch 401/1094 loss=0.4549 (948 img/s)
+[qresnet_q8l2strong_seed1] epoch 2/3 batch 601/1094 loss=0.4347 (953 img/s)
+[qresnet_q8l2strong_seed1] epoch 2/3 batch 801/1094 loss=0.4168 (957 img/s)
+[qresnet_q8l2strong_seed1] epoch 2/3 batch 1001/1094 loss=0.3995 (961 img/s)
+[qresnet_q8l2strong_seed1] epoch 2/3 batch 1094/1094 loss=0.3919 (961 img/s)
+[qresnet_q8l2strong_seed1] epoch 2/3 loss=0.3919 val_acc=100.00 val_auc=1.0000
+[qresnet_q8l2strong_seed1] epoch 3/3 batch 1/1094 loss=0.2997 (159 img/s)
+[qresnet_q8l2strong_seed1] epoch 3/3 batch 201/1094 loss=0.2894 (948 img/s)
+[qresnet_q8l2strong_seed1] epoch 3/3 batch 401/1094 loss=0.2771 (970 img/s)
+[qresnet_q8l2strong_seed1] epoch 3/3 batch 601/1094 loss=0.2651 (975 img/s)
+[qresnet_q8l2strong_seed1] epoch 3/3 batch 801/1094 loss=0.2539 (981 img/s)
+[qresnet_q8l2strong_seed1] epoch 3/3 batch 1001/1094 loss=0.2429 (982 img/s)
+[qresnet_q8l2strong_seed1] epoch 3/3 batch 1094/1094 loss=0.2380 (982 img/s)
+[qresnet_q8l2strong_seed1] epoch 3/3 loss=0.2380 val_acc=100.00 val_auc=1.0000
+[qresnet_q8l2strong_seed1] DONE. clean test: {'acc': 99.99, 'auc': 0.9999925199999999, 'f1': 0.9999}

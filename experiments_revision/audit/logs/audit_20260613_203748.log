@@ -1,0 +1,11 @@
+[log] 2026-06-13T20:37:48 writing console to experiments_revision/audit/logs/audit_20260613_203748.log
+[audit] benign: 9498/10000 decoded
+[audit] malicious: 9466/10000 decoded
+
+=== PER-CLASS SUMMARY ===
+ benign: decode=94.98% len 80.1+/-5.8 (median 83) types={'text': 9498, 'undecoded': 502}
+ malicious: decode=94.66% len 79.7+/-7.6 (median 84) types={'text': 9466, 'undecoded': 534}
+[audit] length-matched subset: 5078 images (2539 vs 2539)
+
+[SUCCESS] audit written to experiments_revision/audit/
+Interpretation: if payload_len distributions or decode_rate differ sharply across classes, near-perfect clean accuracy is a likely shortcut.
