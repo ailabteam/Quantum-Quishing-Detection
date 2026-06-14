@@ -1,113 +1,95 @@
 # Quantum-Quishing-Detection
 
-## 🛡️ Enhancing the Dependability of Quishing Detection Systems via Hybrid Quantum-Classical Architectures
+## Dependability of Quishing Detection under Realistic Corruption: A Rigorous Robustness Study and a Simple Effective Defense
 
-This repository contains the official code and experimental results for the paper:
+This repository contains the code and experimental results for the paper (under major revision at IEEE Transactions on Dependable and Secure Computing, TDSC).
 
-> **Enhancing the Dependability of Quishing Detection Systems via Hybrid Quantum-Classical Architectures under Adversarial Noise**
->
-> **Target Journal:** IEEE Transactions on Dependable and Secure Computing (TDSC)
->
-> Our research introduces **Quantum-ResNet (Q-ResNet)**, a hybrid model that leverages a 4-qubit Variational Quantum Circuit (VQC) integrated with a ResNet-18 backbone. We demonstrate that this architecture achieves superior **dependability** and **robustness** compared to classical Deep Learning models (ResNet-18) when exposed to real-world adversarial conditions.
+> We study the dependability of image-based quishing (QR-phishing) detection under realistic corruption. Using a single ResNet-18 backbone with **parameter-matched classification heads**, we show that the **classifier-head design, not a quantum circuit, governs robustness**. A low-qubit Variational Quantum Circuit (VQC) head provides **no dependable robustness advantage** over parameter-matched classical heads, and its apparent single-seed gains are **training-instability artifacts** that vanish under multi-seed control. We further show that the near-perfect clean accuracy is **not** explained by a payload-length shortcut, and that a simple **noise-aware training** defense restores dependability for every head.
+
+> **Note on a revised conclusion.** An earlier version of this work reported a large "quantum advantage" under Gaussian noise. Under a corrected, standardized evaluation protocol (noise applied pre-normalization) and parameter-matched, multi-seed ablations requested by the reviewers, that advantage **does not hold**: it was attributable to the classical nonlinear bottleneck and to single-seed training instability. This repository reflects the corrected, honest findings.
 
 ---
 
-## 📜 Abstract Highlights (The Winning Evidence)
+## Key results (corrected)
 
-While classical SOTA models achieve $100\%$ accuracy on clean QR code data, they exhibit catastrophic failure modes under image degradation. Our findings show a significant Quantum Advantage in robustness:
+Noise robustness, measured by AURC (area under the accuracy-vs-$\sigma$ curve over $\sigma\in[0,0.2]$ on the $[0,1]$ image scale; higher = more robust). Heads share one ResNet-18 backbone and are parameter-matched to within ~24 parameters.
 
-| Attack Scenario | Classic ResNet Accuracy | Q-ResNet (Proposed) Accuracy | **Quantum Advantage** |
-| :--- | :---: | :---: | :---: |
-| **Clean Data (Baseline)** | 100.00% | 100.00% | 0.00% |
-| **Gaussian Noise ($\sigma=0.4$)** | 61.06% | **90.45%** | **+29.39 pp** |
-| **Extreme Occlusion (100x100)** | 94.24% | **95.25%** | **+1.01 pp** |
+| Classifier head | clean acc | AURC (noise) |
+| :--- | :---: | :---: |
+| Linear FC ($512\to2$) | 100% | 74.9 |
+| Bottleneck+tanh ($512\to4\to2$, no VQC) | 100% | 83.5 |
+| Classical MLP head | 100% | **88.8** |
+| VQC head (Q-ResNet, 4q/2L) | 100% | 80.1 |
 
-The Q-ResNet maintains high dependability (above 90% Acc) where the classical system becomes unusable (50% Acc), establishing QML as a critical component for reliable cybersecurity deployment.
+The VQC head is **below** both parameter-matched classical nonlinear heads. A 3-seed control at a matched bottleneck width of 6 confirms this (VQC 79.4 vs classical MLP 88.3) and shows the VQC's robustness is unstable across seeds (per-seed std ≈ 19).
 
----
+**Defense (noise-aware training).** Training with per-sample Gaussian augmentation restores dependability for every head:
 
-## 📊 Key Results Visualization
+| head | AURC clean-trained | AURC noise-aware |
+| :--- | :---: | :---: |
+| Linear FC | 74.9 | **99.98** |
+| Classical MLP | 88.8 | **99.2** |
 
-**Figure 1: Robustness Against Gaussian Noise**
-
-![Gaussian Noise Robustness Comparison Chart](figures_for_paper/Figure_2_Noise_Robustness.png)
-
-**Figure 2: Feature Space Delineation (t-SNE)**
-
-![Feature Space Visualization using t-SNE](figures_for_paper/Figure_5_Feature_Space_TSNE.png)
+**Dataset validity.** The QR images are rendered from URLs. The payload-length distributions are nearly identical across classes (benign 80.1±5.8 vs malicious 79.7±7.6 characters) and accuracy persists at ~100% on a payload-length-matched subset, so the high clean accuracy is not a payload-length/density shortcut.
 
 ---
 
-## 📂 Project Structure
+## Reproducing the revision results
 
-```
-.
-├── data/
-│   └── raw/kaggle_qr/      # Images (benign/malicious) from Kaggle dataset
-├── experiments/            # Saved model weights (.pth) and training logs (.csv)
-├── figures_for_paper/      # Final PDF Figures (for publication) and CSV data
-├── src/                    # Core Python modules (models, data loaders, utils)
-├── run_plotting.py         # Script to reproduce all figures and tables
-├── train_comparison.py     # Script used for training the Q-ResNet and ResNet baselines
-└── README.md
-```
-
----
-
-## ⚙️ Setup and Reproducibility
-
-This project requires Python 3.10 and a GPU (NVIDIA RTX 40-series recommended) for optimal performance using PennyLane's `lightning.gpu` device.
-
-### 1. Environment Setup
+The revision harness lives in [`revision/`](revision/). It is self-contained and does not modify the original `src/`. See [`revision/README.md`](revision/README.md) for details.
 
 ```bash
-# Create and activate the conda environment
-conda env create -f environment.yml
-conda activate quantum_quish
+# environment (conda-only, no sudo)
+bash revision/setup_env.sh && conda activate quishing-rev
+
+# 0) sanity check on synthetic data
+python -m revision.smoke_test
+
+# 1) main ablation (4 parameter-matched heads) + dense, multi-seed robustness sweep
+python -m revision.run_ablation --data data/raw/qrset --seeds 0,1,2 --epochs 5
+
+# 2) VQC sensitivity (qubits/layers/ansatz)
+python -m revision.vqc_sensitivity --data data/raw/qrset --out experiments_vqc_sens
+python -m revision.robustness --exp-dir experiments_vqc_sens --data data/raw/qrset --out experiments_vqc_sens/robustness_raw.csv
+
+# 3) noise-aware defense
+python -m revision.train --model classic_fc --data data/raw/qrset --noise-aware --noise-sigma-max 0.15
+python -m revision.train --model mlp_head   --data data/raw/qrset --noise-aware --noise-sigma-max 0.15
+
+# 4) dataset bias / shortcut audit
+python -m revision.audit_dataset --data data/raw/qrset --out experiments_revision/audit
+python -m revision.eval_subset  --exp-dir experiments_revision --data data/raw/qrset \
+    --subset experiments_revision/audit/length_matched_subset.csv
+
+# regenerate the paper figures from the result CSVs
+python -m revision.plot_paper_figures --summary experiments_revision/robustness_raw_summary.csv --out figures_for_paper
 ```
 
-### 2. Dataset Download (Kaggle)
+Each run writes logs to `experiments_*/logs/` and a consolidated `REPORT.md` (clean-performance table, AURC/sigma* summary, accuracy-vs-severity curves, and an automatic ablation verdict).
 
-The experiments rely on the large-scale QR code dataset (200k images) from Kaggle.
-
-```bash
-# Ensure Kaggle API is configured (~/.kaggle/kaggle.json)
-kaggle datasets download -d samahsadiq/benign-and-malicious-qr-codes -p data/raw/kaggle_qr --unzip
-
-# Fix nested folder structure (if necessary)
-# (Use 'find' command to move image files out of nested folders)
-```
-
-### 3. Model Training (Required for Reproducing Results)
-
-Run the comparison training script. This trains the Classic ResNet and the Quantum ResNet and saves the best model weights into the `experiments/` directory.
+### Dataset
 
 ```bash
-python train_comparison.py
-```
-*(Note: Training the full model takes approx. 15-20 minutes on a high-end GPU.)*
-
-### 4. Generating Figures and Tables
-
-Use the plotting script to generate all publication-ready figures (PDF format) and the summary robustness table (CSV) based on the model weights saved in step 3.
-
-```bash
-# Generates all .pdf files in figures_for_paper/ and final_paper_results.csv
-python run_plotting.py
+kaggle datasets download -d samahsadiq/benign-and-malicious-qr-codes -p data/raw --unzip
+# the images live under data/raw/qrset/{benign,malicious}/ (ImageFolder layout)
 ```
 
 ---
 
-## ✍️ Citation
+## Takeaways
 
-If you find this research or code useful, please cite our work:
+- The brittleness of QR detectors under noise is real and is governed by the **classifier head**: a linear head collapses, a nonlinear bottleneck head degrades gracefully.
+- A low-qubit **VQC head gives no dependable advantage** over a parameter-matched classical head, and single-seed/single-config evaluation can manufacture a spurious "quantum advantage." Always compare against parameter-matched baselines across multiple seeds.
+- The practical recipe for dependable QR detection is a **classical nonlinear head + noise-aware training**.
+
+## Citation
 
 ```bibtex
-@article{do2025enhancing,
-  title={Enhancing the Dependability of Quishing Detection Systems via Hybrid Quantum-Classical Architectures under Adversarial Noise},
+@article{do2026dependability,
+  title={Dependability of Quishing Detection under Realistic Corruption: A Rigorous Robustness Study and a Simple Effective Defense},
   author={Do, Phuc Hao and [Co-Authors]},
   journal={IEEE Transactions on Dependable and Secure Computing (TDSC)},
-  year={2025},
-  note={Submitted for review}
+  year={2026},
+  note={Under major revision}
 }
 ```
