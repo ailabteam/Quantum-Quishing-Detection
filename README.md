@@ -12,23 +12,23 @@ This repository contains the code and experimental results for the paper (under 
 
 ## Key results (corrected)
 
-Noise robustness, measured by AURC (area under the accuracy-vs-$\sigma$ curve over $\sigma\in[0,0.2]$ on the $[0,1]$ image scale; higher = more robust). Heads share one ResNet-18 backbone and are parameter-matched to within ~24 parameters.
+Noise robustness, measured by AURC (area under the accuracy-vs-$\sigma$ curve over $\sigma\in[0,0.2]$ on the $[0,1]$ image scale; higher = more robust), **mean over three training seeds**. Heads share one ResNet-18 backbone and are parameter-matched to within ~24 parameters.
 
 | Classifier head | clean acc | AURC (noise) |
 | :--- | :---: | :---: |
-| Linear FC ($512\to2$) | 100% | 74.9 |
-| Bottleneck+tanh ($512\to4\to2$, no VQC) | 100% | 83.5 |
-| Classical MLP head | 100% | **88.8** |
-| VQC head (Q-ResNet, 4q/2L) | 100% | 80.1 |
+| Linear FC ($512\to2$) | 100% | 76.3 |
+| Bottleneck+tanh ($512\to4\to2$, no VQC) | 100% | 81.1 |
+| Classical MLP head | 100% | 79.7 |
+| VQC head (Q-ResNet, 4q/2L) | 100% | 73.1 |
 
-The VQC head is **below** both parameter-matched classical nonlinear heads. A 3-seed control at a matched bottleneck width of 6 confirms this (VQC 79.4 vs classical MLP 88.3) and shows the VQC's robustness is unstable across seeds (per-seed std ≈ 19).
+**The key finding is the large seed-to-seed variance** (per-$\sigma$ std up to ~18 accuracy points): no head ranking is reliable across seeds, so clean-trained noise robustness cannot be attributed to any architectural choice. The one robust statement is that the **VQC head is consistently the weakest** (it never beats a parameter-matched classical head). A 3-seed control at bottleneck width 6 confirms this (VQC 79.4 vs classical MLP 88.3; per-seed std ≈ 19), and the VQC sensitivity sweep was erratic across configs (single-seed 95.2 at 6q/2L vs 61.2 at 8q/2L) — the signature of training instability, not advantage.
 
-**Defense (noise-aware training).** Training with per-sample Gaussian augmentation restores dependability for every head:
+**Defense (noise-aware training).** Training with per-sample Gaussian augmentation restores dependability for every head, reliably (std ≈ 0):
 
 | head | AURC clean-trained | AURC noise-aware |
 | :--- | :---: | :---: |
-| Linear FC | 74.9 | **99.98** |
-| Classical MLP | 88.8 | **99.2** |
+| Linear FC | 76.3 | **99.98** |
+| Classical MLP | 79.7 | **99.2** |
 
 **Dataset validity.** The QR images are rendered from URLs. The payload-length distributions are nearly identical across classes (benign 80.1±5.8 vs malicious 79.7±7.6 characters) and accuracy persists at ~100% on a payload-length-matched subset, so the high clean accuracy is not a payload-length/density shortcut.
 
@@ -78,7 +78,7 @@ kaggle datasets download -d samahsadiq/benign-and-malicious-qr-codes -p data/raw
 
 ## Takeaways
 
-- The brittleness of QR detectors under noise is real and is governed by the **classifier head**: a linear head collapses, a nonlinear bottleneck head degrades gracefully.
+- The brittleness of QR detectors under noise is real, but **clean-trained robustness is dominated by seed-to-seed variance**: no classifier head (including the VQC) is reliably more robust, and the linear head is simply the most variance-prone.
 - A low-qubit **VQC head gives no dependable advantage** over a parameter-matched classical head, and single-seed/single-config evaluation can manufacture a spurious "quantum advantage." Always compare against parameter-matched baselines across multiple seeds.
 - The practical recipe for dependable QR detection is a **classical nonlinear head + noise-aware training**.
 
