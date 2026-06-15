@@ -1,6 +1,6 @@
 {
   "model": "mlp_head",
-  "seed": 0,
+  "seed": 1,
   "epochs": 5,
   "lr": 0.0001,
   "freeze_backbone": false,
@@ -9,13 +9,13 @@
   "trainable_params": 11178594,
   "best_val_acc": 100.0,
   "test": {
-    "acc": 99.99249999999999,
-    "auc": 0.9999499975,
-    "f1": 0.9999250018749531
+    "acc": 99.99,
+    "auc": 0.9999824225000001,
+    "f1": 0.9998999899989999
   },
-  "train_time_s": 436.44829869270325,
+  "train_time_s": 440.82505321502686,
   "model_kwargs": {
     "q_device": "default.qubit"
   },
-  "best_path": "experiments_revision/best_mlp_head_seed0.pth"
+  "best_path": "experiments_revision/best_mlp_head_seed1.pth"
 }

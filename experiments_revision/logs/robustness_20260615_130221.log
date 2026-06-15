@@ -1,0 +1,24 @@
+[log] 2026-06-15T13:02:21 writing console to experiments_revision/logs/robustness_20260615_130221.log
+--> [INFO] Found 200000 images. Classes: ['benign', 'malicious']
+--> [INFO] Stratified split: train=140000 val=20000 test=40000
+== evaluating bottleneck_fc_seed0 [bottleneck_fc] (single disk pass, 12 levels x 1 seeds) ==
+   ...batch 0
+   ...batch 50
+Traceback (most recent call last):
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/daipv11/.conda/envs/quishing-rev/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py", line 200, in <module>
+    _cli()
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py", line 190, in _cli
+    run(a.exp_dir, a.data, a.out,
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py", line 112, in run
+    accs = _eval_model_single_pass(model, test_loader, device, plan, pert_seeds, batch_size)
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/robustness.py", line 78, in _eval_model_single_pass
+    xp = apply_threat(x, threat, level, generator=gen).to(device)
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/perturbations.py", line 50, in apply_threat
+    return add_gaussian_noise(x, float(level), generator)
+  File "/home/daipv11/Quantum-Quishing-Detection/revision/perturbations.py", line 26, in add_gaussian_noise
+    return torch.clamp(x + noise * sigma, 0.0, 1.0)
+KeyboardInterrupt
