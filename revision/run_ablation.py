@@ -31,7 +31,13 @@ def main():
     ap.add_argument("--num-workers", type=int, default=8)
     ap.add_argument("--noise-aware", action="store_true",
                     help="also train a noise-aware Q-ResNet and ResNet (R2-2)")
-    ap.add_argument("--pert-seeds", default="0,1,2")
+    # one perturbation seed is enough: the multiple TRAINING seeds provide the
+    # error bars that the paper's main table needs (the std that exposes whether
+    # the head ranking is outside seed noise).
+    ap.add_argument("--pert-seeds", default="0")
+    # default to the fine grid used by the paper figures/tables (transition band)
+    ap.add_argument("--noise-levels", default="0,0.06,0.08,0.10,0.12,0.14,0.16,0.20")
+    ap.add_argument("--occ-levels", default="0,40,80,100")
     ap.add_argument("--q-device", default="default.qubit",
                     help="PennyLane device for the VQC, e.g. lightning.qubit (faster)")
     ap.add_argument("--log-every", type=int, default=200)
@@ -54,8 +60,8 @@ def main():
 
     robustness.run(a.out, a.data, f"{a.out}/robustness_raw.csv",
                    threats={"noise", "occlusion"},
-                   noise_levels=robustness.DEFAULT_NOISE,
-                   occ_levels=robustness.DEFAULT_OCCLUSION,
+                   noise_levels=[float(x) for x in a.noise_levels.split(",")],
+                   occ_levels=[int(x) for x in a.occ_levels.split(",")],
                    pert_seeds=[int(s) for s in a.pert_seeds.split(",")],
                    num_workers=a.num_workers)
     write_report(a.out)
